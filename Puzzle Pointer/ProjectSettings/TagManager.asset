@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PushableBlock
+  - Path
   layers:
   - Default
   - TransparentFX

@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("SFX")]
     [SerializeField] private AudioClip walkSFX;
     [SerializeField] private float SFXSpeed;
+    [SerializeField] private float SFXFadeDuration;
+    [SerializeField, Range(0f, 1f)] float musicVolume = 1f;
 
     //Cached variables and components
     private Rigidbody2D myRigidBody;
@@ -38,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource myAudioSource;
 
     private float SFXSpeedAtStart;
+    private float volumeAtStart;
+    private Coroutine currentFadeRoutine;
 
     [Header("Public variables")]
     public bool insideDialogue = false;
@@ -50,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         myAudioSource = GetComponent<AudioSource>();
         SFXSpeedAtStart = SFXSpeed;
         SFXSpeed = 0f;
+        volumeAtStart = myAudioSource.volume;
     }
 
     void Update()
@@ -59,6 +64,10 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             SFX(walkSFX);
+        }
+        else
+        {
+            SFXStop();
         }
         if (SFXSpeed >= 0)
         {
@@ -137,14 +146,41 @@ public class PlayerMovement : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
+    private IEnumerator SfxFadeRoutine()
+    {
+        myAudioSource.Play();
+
+        float t = 0f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / SFXFadeDuration;
+
+            myAudioSource.volume = Mathf.Lerp(myAudioSource.volume, musicVolume, t);
+
+            yield return new WaitForEndOfFrame();
+        }
+        myAudioSource.Stop();
+        currentFadeRoutine = null;
+    }
 
     private void SFX(AudioClip sfx)
     {
         if (myAudioSource.isPlaying) { return; }
         if(SFXSpeed >= 0) { return; }
+
+        myAudioSource.volume = volumeAtStart;
         SFXSpeed = SFXSpeedAtStart;
         myAudioSource.clip = sfx;
         myAudioSource.Play();
+    }
+
+    private void SFXStop()
+    {
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            currentFadeRoutine = StartCoroutine(SfxFadeRoutine());
+        }
     }
     #region Old Movement
     /*Rigidbody2D myRigidBody;
