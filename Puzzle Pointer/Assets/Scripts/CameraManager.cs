@@ -8,19 +8,12 @@ using UnityEngine.Tilemaps;
 public class CameraManager : MonoBehaviour
 {
     public GameObject virtualCam;
-    private PlayerMovement playerMovement;
 
-    private void Start()
-    {
-        playerMovement = FindObjectOfType<PlayerMovement>();
-    }
-    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
             virtualCam.SetActive(true);
-            //playerMovement.StopPlayerMovement();
         }
     }
     

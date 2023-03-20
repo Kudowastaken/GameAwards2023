@@ -1,18 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PushTheBlockPLS : MonoBehaviour
+public class PushTheBlockPLS : MonoBehaviour, IReset
 {
+    public void Reset()
+    {
+        transform.position = positionAtStart;
+    }
+
     private bool audioSourceLock;
 
     private Rigidbody2D blockRigidBody;
     private AudioSource movementSFX;
 
+    private Vector3 positionAtStart;
+
     void Start()
     {
         blockRigidBody = GetComponent<Rigidbody2D>();
         movementSFX = GetComponent<AudioSource>();
+        PositionCache();
+    }
+
+    private void PositionCache()
+    {
+        positionAtStart = transform.position;
     }
 
     private void OnCollisionStay2D(Collision2D collision)

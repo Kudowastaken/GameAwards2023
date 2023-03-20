@@ -1,29 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonScript : MonoBehaviour
+public class ButtonScript : MonoBehaviour, IReset
 {
+    public void Reset()
+    {
+        isPressed = buttonStatusAtStart;
+        myRenderer.sprite = notPressed;
+    }
+    
     [SerializeField] private Sprite notPressed;
     [SerializeField] private Sprite pressed;
     [SerializeField] private AudioClip pressSFX;
 
     private bool isPressed = false;
     public bool IsPressed { get => isPressed; private set => isPressed = value; }
-    private CircleCollider2D myCircleCollider;
     private SpriteRenderer myRenderer;
     private AudioSource myAudioSource;
 
     [SerializeField] private bool isHoldMode;
     private List<GameObject> gameObjects = new List<GameObject>();
+    private bool buttonStatusAtStart;
 
     private void Start()
     {
-        myCircleCollider = GetComponent<CircleCollider2D>();
         myRenderer = GetComponent<SpriteRenderer>();
         myAudioSource = GetComponent<AudioSource>();
 
         myRenderer.sprite = notPressed;
+        
+        ButtonCache();
+    }
+
+    private void ButtonCache()
+    {
+        buttonStatusAtStart = isPressed;
     }
 
     public void ButtonModeSingle()

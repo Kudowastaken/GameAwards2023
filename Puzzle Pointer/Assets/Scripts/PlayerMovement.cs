@@ -2,8 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IReset
 {
+    public void Reset()
+    {
+        transform.position = resetPoint;
+        isMovingRooms = false;
+        movementDirection = resetMoveInput;
+        myRigidBody.velocity = new Vector2(0, 0);
+        playerTransform.eulerAngles = resetRotation;
+        movementAngle = 0f;
+        StopAllCoroutines();
+    }
+
     //variables
     [Header("Movement Variables")]
     [SerializeField] public float moveSpeed = 1f;
@@ -13,16 +24,12 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("The value should be between 1 and 1.25, otherwise the movement will break")]
     [SerializeField] private float velocityPower = 1f;
     [SerializeField] private float turnBufferTime = 0.2f;
-    [SerializeField] private float roomTransitionMoveSpeed = 2f;
-
-    [Header("Knockback Variables")]
-    [SerializeField] private float knockbackForce = 5f;
 
     //Serialized for debugging purposes
     [Header("Private Variables")]
     [SerializeField]
     public Vector2 movementDirection = Vector2.up;
-    private float movementAngle = 0f;
+    [SerializeField] private float movementAngle = 0f;
 
     [SerializeField] float turnBufferCounter;
     [SerializeField] private int moveInput = 0;
@@ -46,6 +53,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Public variables")]
     public bool insideDialogue = false;
     public bool isMovingRooms = false;
+    public Vector3 resetPoint;
+    public Vector2 resetMoveInput;
+    public Vector3 resetRotation;
 
     private void Start()
     {
@@ -59,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        ResetPosition();
         CurrentInputDirection();
         TurnBuffer();
         if (Input.GetKey(KeyCode.W))
@@ -72,6 +83,14 @@ public class PlayerMovement : MonoBehaviour
         if (SFXSpeed >= 0)
         {
             SFXSpeed -= Time.deltaTime;
+        }
+    }
+
+    private void ResetPosition()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reset();
         }
     }
 
@@ -182,37 +201,4 @@ public class PlayerMovement : MonoBehaviour
             currentFadeRoutine = StartCoroutine(SfxFadeRoutine());
         }
     }
-    #region Old Movement
-    /*Rigidbody2D myRigidBody;
-
-    float horizontal;
-    float vertical;
-    float moveLimiter = 0.7f;
-
-    public float runSpeed = 20.0f;
-
-    void Start()
-    {
-        myRigidBody = GetComponent<Rigidbody2D>();
-    }
-
-    void Update()
-    {
-        // Gives a value between -1 and 1
-        horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
-        vertical = Input.GetAxisRaw("Vertical"); // -1 is down
-    }
-
-    void FixedUpdate()
-    {
-        if (horizontal != 0 && vertical != 0) // Check for diagonal movement
-        {
-            // limit movement speed diagonally, so you move at 70% speed
-            horizontal *= moveLimiter;
-            vertical *= moveLimiter;
-        }
-
-        myRigidBody.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
-    }*/
-    #endregion
 }

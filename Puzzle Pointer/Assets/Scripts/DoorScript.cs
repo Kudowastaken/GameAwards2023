@@ -2,8 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorScript : MonoBehaviour
+public class DoorScript : MonoBehaviour, IReset
 {
+    public void Reset()
+    {
+        doorStatusLastFrame = buttonTrigger.IsPressed;
+        myBoxCollider.enabled = true;
+        mySpriteRenderer.sprite = closedSprite;
+    }
+
     [SerializeField] ButtonScript buttonTrigger;
     [SerializeField] Sprite closedSprite;
     [SerializeField] Sprite openSprite;
