@@ -3,8 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DropBlock : MonoBehaviour
+public class DropBlock : MonoBehaviour, IReset
 {
+    public void Reset()
+    {
+        ShouldDropBlock = true;
+        cartResetTime = cartResetTimeAtStart;
+    }
+
     private BoxCollider2D myBoxCollider;
     public bool ShouldDropBlock { get; private set; }
     [SerializeField] private float cartResetTime;
@@ -17,6 +23,7 @@ public class DropBlock : MonoBehaviour
 
     private void Update()
     {
+        dropOnReset();
         if (cartResetTime > 0)
         {
             cartResetTime -= Time.deltaTime;
@@ -24,6 +31,14 @@ public class DropBlock : MonoBehaviour
         else
         {
             ShouldDropBlock = false;
+        }
+    }
+
+    private void dropOnReset()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reset();
         }
     }
 
