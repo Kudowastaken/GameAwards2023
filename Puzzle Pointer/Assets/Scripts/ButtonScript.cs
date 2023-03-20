@@ -15,7 +15,7 @@ public class ButtonScript : MonoBehaviour, IReset
     [SerializeField] private Sprite pressed;
     [SerializeField] private AudioClip pressSFX;
 
-    private bool isPressed = false;
+    [SerializeField] private bool isPressed = false;
     public bool IsPressed { get => isPressed; private set => isPressed = value; }
     private SpriteRenderer myRenderer;
     private AudioSource myAudioSource;

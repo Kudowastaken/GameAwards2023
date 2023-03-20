@@ -6,17 +6,18 @@ public class DoorScript : MonoBehaviour, IReset
 {
     public void Reset()
     {
-        doorStatusLastFrame = buttonTrigger.IsPressed;
+        doorStatusLastFrame = allButtonsPressed;
         myBoxCollider.enabled = true;
         mySpriteRenderer.sprite = closedSprite;
     }
 
-    [SerializeField] ButtonScript buttonTrigger;
-    [SerializeField] Sprite closedSprite;
-    [SerializeField] Sprite openSprite;
-    [SerializeField] AudioClip openCloseSound;
+    [SerializeField] private ButtonScript[] buttonTriggers;
+    [SerializeField] private Sprite closedSprite;
+    [SerializeField] private Sprite openSprite;
+    [SerializeField] private AudioClip openCloseSound;
 
-    private bool doorStatusLastFrame;
+    [SerializeField] private bool doorStatusLastFrame;
+    [SerializeField] private bool allButtonsPressed;
 
     private BoxCollider2D myBoxCollider;
     private SpriteRenderer mySpriteRenderer;
@@ -30,33 +31,44 @@ public class DoorScript : MonoBehaviour, IReset
         myAudioSource = GetComponent<AudioSource>();
         myAudioSource.clip = openCloseSound;
         mySpriteRenderer.sprite = closedSprite;
-
-        doorStatusLastFrame = buttonTrigger.IsPressed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        DoorStatus();
+        DoorStatusSingleButton();
     }
 
-    private void DoorStatus()
+    private void DoorStatusSingleButton()
     {
-        if (buttonTrigger.IsPressed == doorStatusLastFrame) { return; }
+        if (buttonTriggers == null) { return; }
 
-        if (buttonTrigger.IsPressed)
+        allButtonsPressed = true;
+
+        foreach (var button in buttonTriggers)
+        {
+            if (button.IsPressed == false)
+            {
+                allButtonsPressed = false;
+                break;
+            }
+        }
+
+        if (allButtonsPressed == doorStatusLastFrame) { return; }
+
+        if (allButtonsPressed)
         {
             myAudioSource.Play();
             myBoxCollider.enabled = false;
             mySpriteRenderer.sprite = openSprite;
         }
-        else if(!buttonTrigger.IsPressed) 
+        else if (!allButtonsPressed)
         {
             myAudioSource.Play();
             myBoxCollider.enabled = true;
             mySpriteRenderer.sprite = closedSprite;
         }
 
-        doorStatusLastFrame = buttonTrigger.IsPressed;
+        doorStatusLastFrame = allButtonsPressed;
     }
 }

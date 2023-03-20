@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour, IReset
         movementDirection = resetMoveInput;
         myRigidBody.velocity = new Vector2(0, 0);
         playerTransform.eulerAngles = resetRotation;
-        movementAngle = 0f;
+        movementAngle = resetAngle;
         StopAllCoroutines();
     }
 
@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour, IReset
     public Vector3 resetPoint;
     public Vector2 resetMoveInput;
     public Vector3 resetRotation;
+    public float resetAngle;
 
     private void Start()
     {

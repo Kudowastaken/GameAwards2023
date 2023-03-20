@@ -9,6 +9,7 @@ public class RoomManager : MonoBehaviour
     public GameObject playerResetPoint;
     public Vector2 playerResetMoveInput;
     public Vector3 playerResetRotation;
+    public float playerResetAngle;
     private IReset[] resetables;
 
     private void Start()

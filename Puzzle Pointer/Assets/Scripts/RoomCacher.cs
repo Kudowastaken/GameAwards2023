@@ -24,6 +24,7 @@ public class RoomCacher : MonoBehaviour
             _playerMovement.resetPoint = currentRoom.playerResetPoint.transform.position;
             _playerMovement.resetMoveInput = currentRoom.playerResetMoveInput;
             _playerMovement.resetRotation = currentRoom.playerResetRotation;
+            _playerMovement.resetAngle = currentRoom.playerResetAngle;
             if (previousRoom == null) return;
             
             previousRoom.StopAllCoroutines();
