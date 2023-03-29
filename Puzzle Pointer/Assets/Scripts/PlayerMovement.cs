@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour, IReset
@@ -70,6 +71,7 @@ public class PlayerMovement : MonoBehaviour, IReset
 
     void Update()
     {
+        UnityEngine.Debug.Log(myRigidBody.velocity);
         ResetPosition();
         CurrentInputDirection();
         TurnBuffer();
