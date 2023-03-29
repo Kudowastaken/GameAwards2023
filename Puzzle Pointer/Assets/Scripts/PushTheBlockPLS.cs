@@ -8,6 +8,7 @@ public class PushTheBlockPLS : MonoBehaviour, IReset
     public void Reset()
     {
         transform.position = positionAtStart;
+        blockRigidBody.velocity = Vector3.zero;
     }
 
     private bool audioSourceLock;

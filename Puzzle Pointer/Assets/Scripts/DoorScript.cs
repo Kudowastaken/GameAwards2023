@@ -17,7 +17,10 @@ public class DoorScript : MonoBehaviour, IReset
     [SerializeField] private AudioClip openCloseSound;
 
     [SerializeField] private bool doorStatusLastFrame;
+    [SerializeField] private bool doorStatusLastFrameV2;
     [SerializeField] private bool allButtonsPressed;
+    [SerializeField] private bool allButtonsPressedV2;
+    [SerializeField] private bool closedByDefault = true;
 
     private BoxCollider2D myBoxCollider;
     private SpriteRenderer mySpriteRenderer;
@@ -37,11 +40,13 @@ public class DoorScript : MonoBehaviour, IReset
     void Update()
     {
         DoorStatusSingleButton();
+        DoorStatusSingleButtonReversed();
     }
 
     private void DoorStatusSingleButton()
     {
         if (buttonTriggers == null) { return; }
+        if (!closedByDefault) { return; }
 
         allButtonsPressed = true;
 
@@ -70,5 +75,39 @@ public class DoorScript : MonoBehaviour, IReset
         }
 
         doorStatusLastFrame = allButtonsPressed;
+    }
+
+    private void DoorStatusSingleButtonReversed()
+    {
+        if (buttonTriggers == null) { return; }
+        if (closedByDefault) { return; }
+
+        allButtonsPressedV2 = false;
+
+        foreach (var button in buttonTriggers)
+        {
+            if (button.IsPressed == false)
+            {
+                allButtonsPressedV2 = true;
+                break;
+            }
+        }
+
+        if (allButtonsPressedV2 == doorStatusLastFrameV2) { return; }
+
+        if (allButtonsPressedV2)
+        {
+            myAudioSource.Play();
+            myBoxCollider.enabled = false;
+            mySpriteRenderer.sprite = openSprite;
+        }
+        else if (!allButtonsPressedV2)
+        {
+            myAudioSource.Play();
+            myBoxCollider.enabled = true;
+            mySpriteRenderer.sprite = closedSprite;
+        }
+
+        doorStatusLastFrameV2 = allButtonsPressedV2;
     }
 }
