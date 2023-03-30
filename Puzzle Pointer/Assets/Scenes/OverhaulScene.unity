@@ -457,6 +457,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  mouseStartPosition: {x: 0, y: 0}
+  moveDirection: {x: 0, y: 0}
+  isMoving: 0
+  myRigidBody: {fileID: 0}
+  dragThreshold: 5
+  difference: {x: 0, y: 0}
+  xMoreThan: 0
+  yMoreThan: 0
+  velThreshold: 0
+  direction: {x: 0, y: 0}
 --- !u!212 &583632459
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -517,7 +527,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583632457}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.50005, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -720,7 +730,7 @@ Transform:
   m_GameObject: {fileID: 1289882780}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -4.00008, z: 0}
-  m_LocalScale: {x: 1, y: 7.4375, z: 1}
+  m_LocalScale: {x: 1, y: 24.915625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -980,7 +990,7 @@ Transform:
   m_GameObject: {fileID: 1696263392}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 3.50007, z: 0}
-  m_LocalScale: {x: 1, y: 7.4375, z: 1}
+  m_LocalScale: {x: 1, y: 14.410156, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

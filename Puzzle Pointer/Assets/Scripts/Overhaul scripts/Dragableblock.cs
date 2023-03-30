@@ -1,16 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dragableblock : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
 
-    private Vector2 difference = Vector2.zero;
-    private Vector2 moveDirection = Vector2.zero;
-    private bool isMoving = false;
-    private Rigidbody2D myRigidBody;
+    [SerializeField] private Vector2 mouseStartPosition = Vector2.zero;
+    [SerializeField] private Vector2 moveDirection = Vector2.zero;
+    [SerializeField] private bool isMoving = false;
+    [SerializeField] private Rigidbody2D myRigidBody;
+    [SerializeField] private float dragThreshold;
 
+    public Vector2 difference;
+    public bool xMoreThan;
+    public bool yMoreThan;
+    public bool velThreshold;
+    
+    [SerializeField] private Vector2 direction;
     private void Awake()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -18,13 +27,26 @@ public class Dragableblock : MonoBehaviour
 
     private void OnMouseDown()
     {
-        difference = (Vector2)Input.mousePosition - (Vector2)transform.position;
+        mouseStartPosition = Input.mousePosition;// - (Vector2)transform.position;
+        moveDirection = Vector2.zero;
     }
 
     private void OnMouseDrag()
     {
         if (isMoving) { return; }
-        moveDirection = (Vector2)Input.mousePosition - difference;
+
+        difference = (Vector2)Input.mousePosition - mouseStartPosition;
+        xMoreThan = Mathf.Abs(difference.x) > Mathf.Abs(difference.y);
+        yMoreThan = Mathf.Abs(difference.y) > Mathf.Abs(difference.x);
+
+        if(xMoreThan && Mathf.Abs(difference.x) < dragThreshold){return;}
+        if(yMoreThan && Mathf.Abs(difference.y) < dragThreshold){return;}
+
+        if( xMoreThan && difference.x > 0) {direction = new Vector2(1, 0); isMoving = true;}
+        else if(xMoreThan && difference.x < 0) {direction = new Vector2(-1, 0); isMoving = true;}
+        else if(yMoreThan && difference.y > 0) {direction = new Vector2(0, 1);isMoving = true;}
+        else if (yMoreThan && difference.y < 0) { direction = new Vector2(0, -1); isMoving = true;}
+        else return;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -32,57 +54,29 @@ public class Dragableblock : MonoBehaviour
         if (collision.transform.CompareTag("Wall"))
         {
             isMoving = false;
-            difference = Vector2.zero;
+            mouseStartPosition = Vector2.zero;
             moveDirection = Vector2.zero;
+            direction = Vector2.zero;
             myRigidBody.velocity = Vector2.zero;
         }
     }
 
     private void Update()
     {
-        Debug.Log(isMoving);
         Movement();
     }
 
     private void Movement()
     {
-        if (Mathf.Abs(moveDirection.x) > Mathf.Abs(moveDirection.y))
+        if (!isMoving) { return;}
+        
+        myRigidBody.AddForce(direction * moveSpeed);
+        if (myRigidBody.velocity == new Vector2(0, 0))
         {
-            switch (moveDirection.normalized.x)
-            {
-                case 0:
-                    difference = Vector2.zero;
-                    break;
-                case 1:
-                    difference = new Vector2(1, 0);
-                    isMoving = true;
-                    break;
-                case -1:
-                    difference = new Vector2(-1, 0);
-                    isMoving = true;
-                    break;
-            }
-        }
-        else if(Mathf.Abs(moveDirection.x) < Mathf.Abs(moveDirection.y))
-        {
-            switch (moveDirection.normalized.y)
-            {
-                case 0:
-                    difference = Vector2.zero;
-                    break;
-                case 1:
-                    difference = new Vector2(0, 1);
-                    isMoving = true;
-                    break;
-                case -1:
-                    difference = new Vector2(0, -1);
-                    isMoving = true;
-                    break;
-            }
-        }
-        if (isMoving)
-        {
-            myRigidBody.AddForce(difference * moveSpeed);
+            isMoving = false;
+            direction = Vector2.zero;
+            myRigidBody.velocity = Vector2.zero;
+            velThreshold = false;
         }
     }
 }
