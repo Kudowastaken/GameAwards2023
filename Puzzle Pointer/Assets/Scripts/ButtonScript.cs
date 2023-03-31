@@ -53,7 +53,7 @@ public class ButtonScript : MonoBehaviour, IReset
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("PushableBlock"))
+        if (other.CompareTag("Player") || other.CompareTag("PushableBlock") || other.CompareTag("DragableBlock"))
         {
             gameObjects.Add(other.gameObject);
 
@@ -68,7 +68,7 @@ public class ButtonScript : MonoBehaviour, IReset
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("PushableBlock"))
+        if (other.CompareTag("Player") || other.CompareTag("PushableBlock") || other.CompareTag("DragableBlock"))
         {
             gameObjects.Remove(other.gameObject);
             if (isHoldMode && gameObjects.Count == 0)
