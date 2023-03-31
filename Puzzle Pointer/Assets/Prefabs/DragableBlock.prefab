@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8417cffd75264394c833a3a66c6b3d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 10
   mouseStartPosition: {x: 0, y: 0}
   moveDirection: {x: 0, y: 0}
   isMoving: 0
@@ -108,8 +108,6 @@ MonoBehaviour:
   difference: {x: 0, y: 0}
   xMoreThan: 0
   yMoreThan: 0
-  velThreshold: 0
-  hasReachedThreshold: 0
   direction: {x: 0, y: 0}
 --- !u!61 &1346361850810712682
 BoxCollider2D:
