@@ -17,12 +17,12 @@ public class Dragableblock : MonoBehaviour
     public Vector2 difference;
     public bool xMoreThan;
     public bool yMoreThan;
-    public bool velThreshold;
-    
+
     [SerializeField] private Vector2 direction;
     private void Awake()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
+        myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     private void OnMouseDown()
@@ -42,10 +42,10 @@ public class Dragableblock : MonoBehaviour
         if(xMoreThan && Mathf.Abs(difference.x) < dragThreshold){return;}
         if(yMoreThan && Mathf.Abs(difference.y) < dragThreshold){return;}
 
-        if( xMoreThan && difference.x > 0) {direction = new Vector2(1, 0); isMoving = true;}
-        else if(xMoreThan && difference.x < 0) {direction = new Vector2(-1, 0); isMoving = true;}
-        else if(yMoreThan && difference.y > 0) {direction = new Vector2(0, 1);isMoving = true;}
-        else if (yMoreThan && difference.y < 0) { direction = new Vector2(0, -1); isMoving = true;}
+        if( xMoreThan && difference.x > 0) {direction = new Vector2(1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;}
+        else if(xMoreThan && difference.x < 0) {direction = new Vector2(-1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;}
+        else if(yMoreThan && difference.y > 0) {direction = new Vector2(0, 1);isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;}
+        else if (yMoreThan && difference.y < 0) { direction = new Vector2(0, -1); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;}
         else return;
     }
 
@@ -58,6 +58,7 @@ public class Dragableblock : MonoBehaviour
             moveDirection = Vector2.zero;
             direction = Vector2.zero;
             myRigidBody.velocity = Vector2.zero;
+            myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 
@@ -71,12 +72,12 @@ public class Dragableblock : MonoBehaviour
         if (!isMoving) { return;}
         
         myRigidBody.AddForce(direction * moveSpeed);
+        
         if (myRigidBody.velocity == new Vector2(0, 0))
         {
             isMoving = false;
             direction = Vector2.zero;
             myRigidBody.velocity = Vector2.zero;
-            velThreshold = false;
         }
     }
 }

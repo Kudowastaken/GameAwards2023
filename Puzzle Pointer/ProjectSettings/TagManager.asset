@@ -8,6 +8,7 @@ TagManager:
   - Path
   - Room
   - Wall
+  - DragableBlock
   layers:
   - Default
   - TransparentFX
