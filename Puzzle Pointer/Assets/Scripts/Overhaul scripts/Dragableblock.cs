@@ -58,6 +58,7 @@ public class Dragableblock : MonoBehaviour
             moveDirection = Vector2.zero;
             direction = Vector2.zero;
             myRigidBody.velocity = Vector2.zero;
+            Debug.Log("Collided with" + collision);
             myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
