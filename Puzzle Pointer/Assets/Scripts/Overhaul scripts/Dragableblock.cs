@@ -55,10 +55,10 @@ public class Dragableblock : MonoBehaviour
         if(xMoreThan && Mathf.Abs(difference.x) < dragThreshold){return;}
         if(yMoreThan && Mathf.Abs(difference.y) < dragThreshold){return;}
         
-        if( xMoreThan && difference.x > 0) {direction = new Vector2(1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myRigidBody.isKinematic = false; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this;}
-        else if(xMoreThan && difference.x < 0) {direction = new Vector2(-1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myRigidBody.isKinematic = false; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this;}
-        else if(yMoreThan && difference.y > 0) {direction = new Vector2(0, 1);isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myRigidBody.isKinematic = false; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this;}
-        else if (yMoreThan && difference.y < 0) { direction = new Vector2(0, -1); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myRigidBody.isKinematic = false; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this;}
+        if( xMoreThan && difference.x > 0) {direction = new Vector2(1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this;}
+        else if(xMoreThan && difference.x < 0) {direction = new Vector2(-1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this;}
+        else if(yMoreThan && difference.y > 0) {direction = new Vector2(0, 1);isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this;}
+        else if (yMoreThan && difference.y < 0) { direction = new Vector2(0, -1); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this;}
         else return;
     }
 
@@ -74,8 +74,7 @@ public class Dragableblock : MonoBehaviour
             myRigidBody.velocity = Vector2.zero;
             myBoxCollider.size = new Vector2(1, 1);
             childBoxCollider.size = childColliderSizeAtStart;
-            myRigidBody.isKinematic = true;
-            //myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+            myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 
@@ -88,7 +87,7 @@ public class Dragableblock : MonoBehaviour
     {
         if (!isMoving) { return;}
         
-        if (myRigidBody.velocity == new Vector2(0, 0))/* || Mathf.Abs(myRigidBody.velocity.x) < 0.1f && myRigidBody.velocity.y == 0f || Mathf.Abs(myRigidBody.velocity.y) < 0.1f && myRigidBody.velocity.x == 0f)*/
+        if (myRigidBody.velocity == new Vector2(0, 0) || Mathf.Abs(myRigidBody.velocity.x) < 0.1f && myRigidBody.velocity.y == 0f || Mathf.Abs(myRigidBody.velocity.y) < 0.1f && myRigidBody.velocity.x == 0f)
         {
             isMoving = false;
             mouseReleased = true;
@@ -98,8 +97,7 @@ public class Dragableblock : MonoBehaviour
             myRigidBody.velocity = Vector2.zero;
             myBoxCollider.size = new Vector2(1, 1);
             childBoxCollider.size = childColliderSizeAtStart;
-            myRigidBody.isKinematic = true;
-            //myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+            myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 }
