@@ -14,15 +14,21 @@ public class ButtonScript : MonoBehaviour, IReset
     [SerializeField] private Sprite notPressed;
     [SerializeField] private Sprite pressed;
     [SerializeField] private AudioClip pressSFX;
+    [SerializeField] private Dragableblock connectedBlock;
 
     [SerializeField] private bool isPressed = false;
     public bool IsPressed { get => isPressed; private set => isPressed = value; }
     private SpriteRenderer myRenderer;
     private AudioSource myAudioSource;
+    private Dragableblock blockHit;
+    [SerializeField] private float buttonTimer;
+    private bool buttonTimerOver = false;
 
     [SerializeField] private bool isHoldMode;
     private List<GameObject> gameObjects = new List<GameObject>();
     private bool buttonStatusAtStart;
+    private float buttonTimerAtStart;
+    private bool shouldCount;
 
     private void Start()
     {
@@ -34,9 +40,28 @@ public class ButtonScript : MonoBehaviour, IReset
         ButtonCache();
     }
 
+    private void Update()
+    {
+        if (shouldCount && buttonTimer <= 0f)
+        {
+            buttonTimer -= Time.deltaTime;
+            if (buttonTimer <= 0f)
+            {
+                buttonTimerOver = true;
+            }
+        }
+
+        if (buttonTimerOver)
+        {
+            Debug.Log("Button has been pressed");
+            
+        }
+    }
+
     private void ButtonCache()
     {
         buttonStatusAtStart = isPressed;
+        buttonTimerAtStart = buttonTimer;
     }
 
     public void ButtonModeSingle()
@@ -53,16 +78,23 @@ public class ButtonScript : MonoBehaviour, IReset
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("PushableBlock") || other.CompareTag("DragableBlock"))
+        if (other.CompareTag("DragableBlock"))
         {
-            gameObjects.Add(other.gameObject);
+            blockHit = other.gameObject.GetComponent<Dragableblock>();
+            
+            if (blockHit == connectedBlock)
+            {
+                buttonTimer = buttonTimerAtStart;
+                buttonTimerOver = false;
+                shouldCount = true;
+            }
 
-            if (isPressed) { return; }
-
+            /*
             myRenderer.sprite = pressed;
             isPressed = true;
             myAudioSource.clip = pressSFX;
             myAudioSource.Play();
+            */
         }
     }
 
@@ -71,7 +103,7 @@ public class ButtonScript : MonoBehaviour, IReset
         if (other.CompareTag("Player") || other.CompareTag("PushableBlock") || other.CompareTag("DragableBlock"))
         {
             gameObjects.Remove(other.gameObject);
-            if (isHoldMode && gameObjects.Count == 0)
+            if (isHoldMode && buttonTimerOver)
             {
                 Invoke("ButtonReset", 0.5f);
             }
