@@ -177,18 +177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8417cffd75264394c833a3a66c6b3d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 35
-  mouseStartPosition: {x: 0, y: 0}
-  moveDirection: {x: 0, y: 0}
-  isMoving: 0
-  myRigidBody: {fileID: 0}
-  dragThreshold: 5
-  difference: {x: 0, y: 0}
-  xMoreThan: 0
-  yMoreThan: 0
-  direction: {x: 0, y: 0}
   childBoxCollider: {fileID: 3375040564463219039}
-  mouseReleased: 0
+  dragThreshold: 30
+  moveSpeed: 35
 --- !u!61 &1346361850810712682
 BoxCollider2D:
   m_ObjectHideFlags: 0

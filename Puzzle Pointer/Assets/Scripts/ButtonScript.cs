@@ -54,7 +54,6 @@ public class ButtonScript : MonoBehaviour, IReset
         if (buttonTimerOver)
         {
             Debug.Log("Button has been pressed");
-            
         }
     }
 

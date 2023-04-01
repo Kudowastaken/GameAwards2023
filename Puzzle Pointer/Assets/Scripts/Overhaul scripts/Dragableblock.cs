@@ -1,29 +1,24 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
+// ReSharper disable InconsistentNaming
 public class Dragableblock : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
-
-    [SerializeField] private Vector2 mouseStartPosition = Vector2.zero;
-    [SerializeField] private Vector2 moveDirection = Vector2.zero;
-    [SerializeField] private bool isMoving = false;
-    [SerializeField] private Rigidbody2D myRigidBody;
-    [SerializeField] private float dragThreshold;
-
-    public Vector2 difference;
-    public bool xMoreThan;
-    public bool yMoreThan;
-
-    [SerializeField] private Vector2 direction;
-    private BoxCollider2D myBoxCollider;
     [SerializeField] private BoxCollider2D childBoxCollider;
+    [SerializeField] private float dragThreshold;
+    [SerializeField] private float moveSpeed = 5f;
+    
+    private Rigidbody2D myRigidBody;
+    private BoxCollider2D myBoxCollider;
+    
+    private bool xMoreThan;
+    private bool yMoreThan;
+    private bool isMoving;
+    private bool mouseReleased = true;
+    private Vector2 direction;
     private Vector2 childColliderSizeAtStart;
-    public bool mouseReleased = true;
-    public static Dragableblock MovingBlock;
+    private Vector2 difference;
+    private Vector2 mouseStartPosition = Vector2.zero;
+    
+    private static Dragableblock movingBlock;
     private void Awake()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -38,8 +33,7 @@ public class Dragableblock : MonoBehaviour
 
     private void OnMouseDown()
     {
-        mouseStartPosition = Input.mousePosition;// - (Vector2)transform.position;
-        moveDirection = Vector2.zero;
+        mouseStartPosition = Input.mousePosition;
         mouseReleased = false;
     }
 
@@ -52,7 +46,7 @@ public class Dragableblock : MonoBehaviour
     {
         if (isMoving) { return; }
         if (mouseReleased) { return; }
-        if (MovingBlock != null) { return; }
+        if (movingBlock != null) { return; }
         
         difference = (Vector2)Input.mousePosition - mouseStartPosition;
         xMoreThan = Mathf.Abs(difference.x) > Mathf.Abs(difference.y);
@@ -61,10 +55,10 @@ public class Dragableblock : MonoBehaviour
         if(xMoreThan && Mathf.Abs(difference.x) < dragThreshold){return;}
         if(yMoreThan && Mathf.Abs(difference.y) < dragThreshold){return;}
         
-        if( xMoreThan && difference.x > 0) {direction = new Vector2(1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); MovingBlock = this;}
-        else if(xMoreThan && difference.x < 0) {direction = new Vector2(-1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); MovingBlock = this;}
-        else if(yMoreThan && difference.y > 0) {direction = new Vector2(0, 1);isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); MovingBlock = this;}
-        else if (yMoreThan && difference.y < 0) { direction = new Vector2(0, -1); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); MovingBlock = this;}
+        if( xMoreThan && difference.x > 0) {direction = new Vector2(1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myRigidBody.isKinematic = false; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this;}
+        else if(xMoreThan && difference.x < 0) {direction = new Vector2(-1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myRigidBody.isKinematic = false; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this;}
+        else if(yMoreThan && difference.y > 0) {direction = new Vector2(0, 1);isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myRigidBody.isKinematic = false; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this;}
+        else if (yMoreThan && difference.y < 0) { direction = new Vector2(0, -1); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myRigidBody.isKinematic = false; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this;}
         else return;
     }
 
@@ -74,49 +68,38 @@ public class Dragableblock : MonoBehaviour
         {
             isMoving = false;
             mouseReleased = true;
-            MovingBlock = null;
+            movingBlock = null;
             mouseStartPosition = Vector2.zero;
-            moveDirection = Vector2.zero;
             direction = Vector2.zero;
             myRigidBody.velocity = Vector2.zero;
-            Debug.Log("Collided with" + collision.gameObject);
             myBoxCollider.size = new Vector2(1, 1);
             childBoxCollider.size = childColliderSizeAtStart;
-            myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+            myRigidBody.isKinematic = true;
+            //myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 
     private void Update()
     {
-        //StartMovement();
         StopMoving();
     }
-
-    // private void StartMovement()
-    // {
-    //     if (!isMoving && !mouseReleased) { return;}
-    //     if (mouseReleased) { return; }
-    //     
-    //     Debug.Log("Force gets applied");
-    //     myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse);
-    // }
 
     private void StopMoving()
     {
         if (!isMoving) { return;}
         
-        if (myRigidBody.velocity == new Vector2(0, 0))
+        if (myRigidBody.velocity == new Vector2(0, 0))/* || Mathf.Abs(myRigidBody.velocity.x) < 0.1f && myRigidBody.velocity.y == 0f || Mathf.Abs(myRigidBody.velocity.y) < 0.1f && myRigidBody.velocity.x == 0f)*/
         {
             isMoving = false;
             mouseReleased = true;
-            MovingBlock = null;
+            movingBlock = null;
             mouseStartPosition = Vector2.zero;
-            moveDirection = Vector2.zero;
             direction = Vector2.zero;
             myRigidBody.velocity = Vector2.zero;
             myBoxCollider.size = new Vector2(1, 1);
             childBoxCollider.size = childColliderSizeAtStart;
-            myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+            myRigidBody.isKinematic = true;
+            //myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 }
