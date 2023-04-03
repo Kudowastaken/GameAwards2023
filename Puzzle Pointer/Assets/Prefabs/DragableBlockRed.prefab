@@ -112,7 +112,7 @@ Transform:
   m_Children:
   - {fileID: 3516393604834685533}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3703287485872201568
 SpriteRenderer:
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8647c5000284b46419705512b0cfa69a, type: 3}
-  m_Color: {r: 1, g: 0.68553454, b: 0.68553454, a: 1}
+  m_Color: {r: 1, g: 0.5330188, b: 0.5330188, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -181,6 +181,7 @@ MonoBehaviour:
   childBoxCollider: {fileID: 3375040564463219039}
   dragThreshold: 35
   moveSpeed: 50
+  blockMovesUpdateInterval: 0.03
   moveSFX: {fileID: 8300000, guid: f95c00eadfbaed64e9093d0a2ad92533, type: 3}
 --- !u!61 &1346361850810712682
 BoxCollider2D:

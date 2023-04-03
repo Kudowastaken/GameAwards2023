@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private Button restartLevelButton;
     [SerializeField] private TMP_Text moveDisplay;
     [SerializeField] private ButtonScript[] buttonScripts;
+    [SerializeField] private float textUpdateInterval;
 
     private void Start()
     {
@@ -21,8 +22,16 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        moveDisplay.text = $"Moves: {Dragableblock.BlockMoves}";
+        UpdateMovesText();
         CheckForButtons();
+    }
+
+    private void UpdateMovesText()
+    {
+        if (Time.frameCount % textUpdateInterval == 0f)
+        {
+            moveDisplay.text = Dragableblock.BlockMoves >= 999f ? $"Moves: 999" : $"Moves: {Dragableblock.BlockMoves}";
+        }
     }
 
     private void CheckForButtons()
@@ -31,11 +40,13 @@ public class GameManager : MonoBehaviour
         {
             if (!button.IsPressed)
             {
+                Dragableblock.LevelHasBeenFinished = false;
                 return;
             }
         }
 
         nextLevelButton.enabled = true;
+        Dragableblock.LevelHasBeenFinished = true;
     }
 
     public void LoadNextScene()
