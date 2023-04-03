@@ -12,6 +12,7 @@ public class ButtonScript : MonoBehaviour
     public bool IsPressed { get => isPressed; private set => isPressed = value; }
     private SpriteRenderer myRenderer;
     private AudioSource myAudioSource;
+    private Dragableblock hit;
     
     private void Start()
     {
@@ -23,11 +24,21 @@ public class ButtonScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.transform.TryGetComponent(out Dragableblock otherBlock) == connectedBlock)
+        hit = other.transform.GetComponent<Dragableblock>();
+        if (hit == connectedBlock)
         {
             IsPressed = true;
             myAudioSource.clip = pressSFX;
             myAudioSource.Play();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        hit = other.transform.GetComponent<Dragableblock>();
+        if (hit == connectedBlock)
+        {
+            IsPressed = false;
         }
     }
 }

@@ -10,6 +10,8 @@ TagManager:
   - Wall
   - DragableBlock
   - DragableCollider
+  - NextLevelButton
+  - RestartLevelButton
   layers:
   - Default
   - TransparentFX
