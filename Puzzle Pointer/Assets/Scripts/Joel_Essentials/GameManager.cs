@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     private Button nextLevelButton;
     private Button restartLevelButton;
+    private Image nextLevelImage;
     [SerializeField] private TMP_Text moveDisplay;
     [SerializeField] private ButtonScript[] buttonScripts;
     [SerializeField] private float textUpdateInterval;
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
         Dragableblock.BlockMoves = 0f;
         nextLevelButton = GameObject.FindGameObjectWithTag("NextLevelButton").GetComponent<Button>();
         nextLevelButton.enabled = false;
+        nextLevelImage = GameObject.FindGameObjectWithTag("NextLevelButton").GetComponent<Image>();
+        nextLevelImage.enabled = false;
         nextLevelButton.onClick.AddListener(LoadNextScene);
         restartLevelButton = GameObject.FindGameObjectWithTag("RestartLevelButton").GetComponent<Button>();
         restartLevelButton.onClick.AddListener(ReloadScene);
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
         }
 
         nextLevelButton.enabled = true;
+        nextLevelImage.enabled = true;
         Dragableblock.LevelHasBeenFinished = true;
     }
 
