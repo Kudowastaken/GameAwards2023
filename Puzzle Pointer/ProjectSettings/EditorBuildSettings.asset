@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level Template.unity
     guid: 083d21632a9d0ee4482226758be17394
   - enabled: 1
+    path: Assets/Scenes/TutorialScreen.unity
+    guid: b979bf11a8be5d94cb4ed88b1121f941
+  - enabled: 1
     path: Assets/Scenes/Levels/Level 1.unity
     guid: 2c21a1d47ba045343bcbb5b2dcb11bfe
   - enabled: 1
@@ -32,7 +35,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Level 6.unity
     guid: bffc630b6d4e80049abfaf0542e50179
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/Levels/Simon Level 7.unity
+    guid: ac5dd0895520d234fad3e6b13cff8fac
+  - enabled: 1
     path: Assets/Scenes/Levels/Simon Lvl something.unity
     guid: 60bfe82dc98e5c3429bb9e3380fe13c0
   m_configObjects: {}

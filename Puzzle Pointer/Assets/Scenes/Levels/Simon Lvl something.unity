@@ -3507,6 +3507,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas stuff
       objectReference: {fileID: 0}
+    - target: {fileID: 4967329380009343802, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: m_text
+      value: 'Best: 22'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
