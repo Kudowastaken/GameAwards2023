@@ -12,6 +12,7 @@ TagManager:
   - DragableCollider
   - NextLevelButton
   - RestartLevelButton
+  - PauseMenu
   layers:
   - Default
   - TransparentFX
