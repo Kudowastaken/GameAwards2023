@@ -25,8 +25,23 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        GameIsPaused();
         UpdateMovesText();
         CheckForButtons();
+    }
+
+    private void GameIsPaused()
+    {
+        if(PauseMenu.isPaused) 
+        {
+            nextLevelButton.enabled = false;
+            restartLevelButton.enabled = false;
+        }
+        else
+        {
+            nextLevelButton.enabled = true;
+            restartLevelButton.enabled = true;
+        }
     }
 
     private void UpdateMovesText()

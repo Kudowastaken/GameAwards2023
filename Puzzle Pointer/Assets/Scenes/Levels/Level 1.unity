@@ -1829,6 +1829,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 929670551368617563, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: m_Name
+      value: ' Pause menu image'
+      objectReference: {fileID: 0}
     - target: {fileID: 1960797286011257964, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
       propertyPath: m_RootOrder
       value: 3
