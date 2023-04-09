@@ -10,6 +10,7 @@ public class PauseMenu : SingletonPersistent<PauseMenu>
     {
         pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
         pauseMenu.SetActive(false);
+        isPaused = false;
     }
 
     // Update is called once per frame

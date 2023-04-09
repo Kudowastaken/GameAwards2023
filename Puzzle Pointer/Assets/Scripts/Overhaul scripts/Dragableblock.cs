@@ -13,6 +13,7 @@ public class Dragableblock : MonoBehaviour
     private Rigidbody2D myRigidBody;
     private BoxCollider2D myBoxCollider;
     private AudioSource myAudioSource;
+    private Animator boxAnimator;
     
     private bool xMoreThan;
     private bool yMoreThan;
@@ -31,6 +32,7 @@ public class Dragableblock : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody2D>();
         myBoxCollider = GetComponent<BoxCollider2D>();
         myAudioSource = GetComponent<AudioSource>();
+        boxAnimator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -66,10 +68,10 @@ public class Dragableblock : MonoBehaviour
         if(xMoreThan && Mathf.Abs(difference.x) < dragThreshold){return;}
         if(yMoreThan && Mathf.Abs(difference.y) < dragThreshold){return;}
         
-        if( xMoreThan && difference.x > 0) {direction = new Vector2(1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); }
-        else if(xMoreThan && difference.x < 0) {direction = new Vector2(-1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval);}
-        else if(yMoreThan && difference.y > 0) {direction = new Vector2(0, 1);isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval);}
-        else if (yMoreThan && difference.y < 0) { direction = new Vector2(0, -1); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval);}
+        if( xMoreThan && difference.x > 0) {direction = new Vector2(1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingHorizontally", true); }
+        else if(xMoreThan && difference.x < 0) {direction = new Vector2(-1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingHorizontally", true); }
+        else if(yMoreThan && difference.y > 0) {direction = new Vector2(0, 1);isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingVertically", true); }
+        else if (yMoreThan && difference.y < 0) { direction = new Vector2(0, -1); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingVertically", true); }
         else return;
     }
 
@@ -86,6 +88,8 @@ public class Dragableblock : MonoBehaviour
             myBoxCollider.size = new Vector2(1, 1);
             childBoxCollider.size = childColliderSizeAtStart;
             myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+            boxAnimator.SetBool("IsMovingHorizontally", false);
+            boxAnimator.SetBool("IsMovingVertically", false);
         }
     }
 
@@ -109,6 +113,8 @@ public class Dragableblock : MonoBehaviour
             myBoxCollider.size = new Vector2(1, 1);
             childBoxCollider.size = childColliderSizeAtStart;
             myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+            boxAnimator.SetBool("IsMovingHorizontally", false);
+            boxAnimator.SetBool("IsMovingVertically", false);
         }
     }
 

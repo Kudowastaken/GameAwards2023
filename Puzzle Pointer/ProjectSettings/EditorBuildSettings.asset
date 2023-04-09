@@ -41,4 +41,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Simon Lvl something.unity
     guid: 60bfe82dc98e5c3429bb9e3380fe13c0
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 529306241e35f7f46af882d04e5ad72a, type: 2}
