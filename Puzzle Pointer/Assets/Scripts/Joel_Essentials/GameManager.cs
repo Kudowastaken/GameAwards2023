@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private Button nextLevelButton;
     private Button restartLevelButton;
     private Image nextLevelImage;
+    private Button mainMenuGameButton;
     [SerializeField] private TMP_Text moveDisplay;
     [SerializeField] private ButtonScript[] buttonScripts;
     [SerializeField] private float textUpdateInterval;
@@ -21,6 +22,8 @@ public class GameManager : MonoBehaviour
         nextLevelButton.onClick.AddListener(LoadNextScene);
         restartLevelButton = GameObject.FindGameObjectWithTag("RestartLevelButton").GetComponent<Button>();
         restartLevelButton.onClick.AddListener(ReloadScene);
+        mainMenuGameButton = GameObject.FindGameObjectWithTag("MainMenuButton").GetComponent<Button>();
+        mainMenuGameButton.onClick.AddListener(MainMenu);
     }
 
     private void Update()
@@ -77,5 +80,10 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Reloading scene");
         SceneManagerExtended.ReloadScene();
+    }
+
+    public void MainMenu()
+    {
+        SceneManagerExtended.LoadScene(0);
     }
 }

@@ -13,6 +13,7 @@ TagManager:
   - NextLevelButton
   - RestartLevelButton
   - PauseMenu
+  - MainMenuButton
   layers:
   - Default
   - TransparentFX
