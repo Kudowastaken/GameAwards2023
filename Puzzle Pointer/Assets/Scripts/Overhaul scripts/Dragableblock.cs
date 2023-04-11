@@ -1,6 +1,7 @@
 using System;
 using Unity.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 // ReSharper disable InconsistentNaming
 public class Dragableblock : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class Dragableblock : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float blockMovesUpdateInterval;
     [SerializeField] private AudioClip moveSFX;
-    
+    [SerializeField] AudioMixerGroup SFXMixer;
+
     private Rigidbody2D myRigidBody;
     private BoxCollider2D myBoxCollider;
     private AudioSource myAudioSource;
@@ -39,6 +41,7 @@ public class Dragableblock : MonoBehaviour
     {
         myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
         childColliderSizeAtStart = childBoxCollider.size;
+        myAudioSource.outputAudioMixerGroup = SFXMixer;
     }
 
     private void OnMouseDown()

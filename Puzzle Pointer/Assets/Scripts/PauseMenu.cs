@@ -8,8 +8,9 @@ public class PauseMenu : SingletonPersistent<PauseMenu>
 {
     public static bool isPaused;
     GameObject pauseMenu;
-    Animator myAnimator;
-
+    public Animator myAnimator;
+    public static bool cantPause;
+     
     [SerializeField] Button mainMenuButton;
 
     [SerializeField] float animationDuration = 0.5f;
@@ -36,7 +37,19 @@ public class PauseMenu : SingletonPersistent<PauseMenu>
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (SceneManager.GetActiveScene().buildIndex > 1)
+        {
+            cantPause = false;
+        }
+        else
+        {
+            cantPause = true;
+        }
+        if (cantPause)
+        {
+            return;
+        }
+            if (Input.GetKeyDown(KeyCode.Escape))
         {
             isPaused = !isPaused;
             myAnimator.Play(isPaused ? "Open" : "Close", -1);

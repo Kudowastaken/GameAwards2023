@@ -820,6 +820,7 @@ MonoBehaviour:
   defaultMusic: {fileID: 8300000, guid: 1157f384a83d5e74ba239800706fc4a3, type: 3}
   musicFadeDuration: 3
   musicVolume: 1
+  musicMixer: {fileID: 0}
 --- !u!4 &2036923548
 Transform:
   m_ObjectHideFlags: 0
