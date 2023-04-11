@@ -1,30 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : SingletonPersistent<PauseMenu>
 {
     public static bool isPaused;
     GameObject pauseMenu;
+    Animator myAnimator;
+
+    [SerializeField] Button mainMenuButton;
+
+    [SerializeField] float animationDuration = 0.5f;
+
+    float animationSpeed = 1f;
+
     private void Start()
     {
         pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
-        pauseMenu.SetActive(false);
         isPaused = false;
+        myAnimator = GetComponent<Animator>();
+
+        animationSpeed = 1 / animationDuration;
+        myAnimator.speed = animationSpeed;
+        myAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
+
+        OnLevelWasLoaded(0);
     }
 
-    // Update is called once per frame
+    private void OnLevelWasLoaded(int level)
+    {
+        mainMenuButton.onClick.AddListener(FindObjectOfType<GameManager>().MainMenu);
+    }
+
     void Update()
     {
-        if (isPaused == false && Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            pauseMenu.SetActive(true);
-            isPaused = true;
-        }
-        else if (isPaused == true && Input.GetKeyDown(KeyCode.Escape))
-        {
-            pauseMenu.SetActive(false);
-            isPaused = false;
+            isPaused = !isPaused;
+            myAnimator.Play(isPaused ? "Open" : "Close", -1);
+            Time.timeScale = isPaused ? 0f : 1f;
         }
     }
 }

@@ -22,8 +22,6 @@ public class GameManager : MonoBehaviour
         nextLevelButton.onClick.AddListener(LoadNextScene);
         restartLevelButton = GameObject.FindGameObjectWithTag("RestartLevelButton").GetComponent<Button>();
         restartLevelButton.onClick.AddListener(ReloadScene);
-        mainMenuGameButton = GameObject.FindGameObjectWithTag("MainMenuButton").GetComponent<Button>();
-        mainMenuGameButton.onClick.AddListener(MainMenu);
     }
 
     private void Update()
@@ -84,6 +82,7 @@ public class GameManager : MonoBehaviour
 
     public void MainMenu()
     {
+        Time.timeScale = 1f;
         SceneManagerExtended.LoadScene(0);
     }
 }
