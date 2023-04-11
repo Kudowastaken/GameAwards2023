@@ -9,17 +9,21 @@ public class ButtonScript : MonoBehaviour
     [SerializeField] private AudioClip pressSFX;
     [SerializeField] private Dragableblock connectedBlock;
     [SerializeField] private bool isPressed = false;
+    [SerializeField] private Color32 particleColor;
     public bool IsPressed { get => isPressed; private set => isPressed = value; }
     private SpriteRenderer myRenderer;
     private AudioSource myAudioSource;
+    private ParticleSystem myParticleSystem;
     private Dragableblock hit;
     
     private void Start()
     {
         myRenderer = GetComponent<SpriteRenderer>();
         myAudioSource = GetComponent<AudioSource>();
+        myParticleSystem = GetComponent<ParticleSystem>();
 
         myRenderer.sprite = buttonSprite;
+        myParticleSystem.startColor = particleColor;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -30,6 +34,7 @@ public class ButtonScript : MonoBehaviour
             IsPressed = true;
             myAudioSource.clip = pressSFX;
             myAudioSource.Play();
+            myParticleSystem.Play();
         }
     }
 
