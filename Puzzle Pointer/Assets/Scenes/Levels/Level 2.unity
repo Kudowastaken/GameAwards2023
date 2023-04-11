@@ -5451,6 +5451,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 348837062525079802, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 348837062525079802, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1960797286011257964, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5495,27 +5503,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1974799462934873195, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6518966610629852126}
-    - target: {fileID: 1974799462934873195, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetVolumeFromSlider
+    - target: {fileID: 4157789808785489083, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2469751263143914341, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6518966610629852126}
-    - target: {fileID: 2469751263143914341, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetVolumeFromSlider
+    - target: {fileID: 4157789808785489083, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157789808785489083, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4696380237604591096, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
       propertyPath: m_Name
       value: Canvas stuff
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 4696380237604591096, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -5532,8 +5535,6 @@ PrefabInstance:
       propertyPath: m_text
       value: Level 2
       objectReference: {fileID: 0}
-=======
->>>>>>> ed4d5ee40b08a9cc8ac0e6ecf3a5d8311f6cd4f9
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5550,7 +5551,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
 --- !u!1001 &7826818145689806474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5673,16 +5673,3 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d928b8adc78fe648ac8723b939694bc, type: 3}
-=======
---- !u!114 &6518966610629852126 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5152575281005026266, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
-  m_PrefabInstance: {fileID: 6518966610629852124}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f3952c946b92b4418a29b148abef981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
->>>>>>> ed4d5ee40b08a9cc8ac0e6ecf3a5d8311f6cd4f9
