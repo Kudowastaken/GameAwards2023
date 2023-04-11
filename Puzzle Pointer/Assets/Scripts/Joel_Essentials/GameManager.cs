@@ -1,30 +1,26 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 public class GameManager : MonoBehaviour
 {
-    private UnityEngine.UI.Button nextLevelButton;
-    private UnityEngine.UI.Button restartLevelButton;
+    private Button nextLevelButton;
+    private Button restartLevelButton;
     private Image nextLevelImage;
-    private UnityEngine.UI.Button mainMenuGameButton;
+    private Button mainMenuGameButton;
     [SerializeField] private TMP_Text moveDisplay;
     [SerializeField] private ButtonScript[] buttonScripts;
     [SerializeField] private float textUpdateInterval;
 
-    SoundSettings soundSettings;
-
     private void Start()
     {
-        soundSettings = FindObjectOfType<SoundSettings>();
         Dragableblock.BlockMoves = 0f;
-        nextLevelButton = GameObject.FindGameObjectWithTag("NextLevelButton").GetComponent<UnityEngine.UI.Button>();
+        nextLevelButton = GameObject.FindGameObjectWithTag("NextLevelButton").GetComponent<Button>();
         nextLevelButton.enabled = false;
         nextLevelImage = GameObject.FindGameObjectWithTag("NextLevelButton").GetComponent<Image>();
         nextLevelImage.enabled = false;
         nextLevelButton.onClick.AddListener(LoadNextScene);
-        restartLevelButton = GameObject.FindGameObjectWithTag("RestartLevelButton").GetComponent<UnityEngine.UI.Button>();
+        restartLevelButton = GameObject.FindGameObjectWithTag("RestartLevelButton").GetComponent<Button>();
         restartLevelButton.onClick.AddListener(ReloadScene);
     }
 
@@ -94,7 +90,5 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManagerExtended.LoadScene(0);
-        PauseMenu.Instance.myAnimator.Play("Close");
-        PauseMenu.isPaused = false;
     }
 }

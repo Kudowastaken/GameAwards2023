@@ -504,7 +504,7 @@ Transform:
   - {fileID: 1549184441221752069}
   - {fileID: 2087824740881241134}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8962025497968234961
 MonoBehaviour:
@@ -523,7 +523,6 @@ MonoBehaviour:
   moveSpeed: 50
   blockMovesUpdateInterval: 0.03
   moveSFX: {fileID: 8300000, guid: f95c00eadfbaed64e9093d0a2ad92533, type: 3}
-  SFXMixer: {fileID: 24300002, guid: bb6bc9c589abec645a0ffe2f47e5d4cb, type: 2}
 --- !u!61 &1346361850810712682
 BoxCollider2D:
   m_ObjectHideFlags: 0
