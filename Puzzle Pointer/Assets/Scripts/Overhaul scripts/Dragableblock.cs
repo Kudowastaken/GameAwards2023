@@ -14,6 +14,7 @@ public class Dragableblock : MonoBehaviour
     private BoxCollider2D myBoxCollider;
     private AudioSource myAudioSource;
     private Animator boxAnimator;
+    private SpriteMask mySpriteMask;
     
     private bool xMoreThan;
     private bool yMoreThan;
@@ -26,19 +27,21 @@ public class Dragableblock : MonoBehaviour
 
     private static Dragableblock movingBlock;
     public static float BlockMoves { get; set; }
-    public static bool LevelHasBeenFinished { get; set; }
+    public bool LevelHasBeenFinished { get; set; }
     private void Awake()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
         myBoxCollider = GetComponent<BoxCollider2D>();
         myAudioSource = GetComponent<AudioSource>();
         boxAnimator = GetComponent<Animator>();
+        mySpriteMask = GetComponentInChildren<SpriteMask>();
     }
 
     private void Start()
     {
         myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
         childColliderSizeAtStart = childBoxCollider.size;
+        mySpriteMask.enabled = false;
     }
 
     private void OnMouseDown()
@@ -95,6 +98,16 @@ public class Dragableblock : MonoBehaviour
 
     private void Update()
     {
+        if (LevelHasBeenFinished)
+        {
+            mySpriteMask.enabled = true;
+            boxAnimator.SetBool("IsLevelComplete", true);
+        }
+        else
+        {
+            mySpriteMask.enabled = false;
+            boxAnimator.SetBool("IsLevelComplete", false);
+        }
         StopMoving();
     }
 

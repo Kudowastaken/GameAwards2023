@@ -52,13 +52,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2533069806020752707, guid: ca1bfc36befb32c42b839ff19c11f5e8, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 3059410053845794957, guid: ca1bfc36befb32c42b839ff19c11f5e8, type: 3}
       propertyPath: m_Name
       value: InnerWalls
       objectReference: {fileID: 0}
     - target: {fileID: 6035533497180588051, guid: ca1bfc36befb32c42b839ff19c11f5e8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b0fa8a2429810d1498f6fd91947ab56e, type: 3}
+    - target: {fileID: 6035533497180588051, guid: ca1bfc36befb32c42b839ff19c11f5e8, type: 3}
       propertyPath: m_SortingOrder
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635591260790328336, guid: ca1bfc36befb32c42b839ff19c11f5e8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7940625
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635591260790328336, guid: ca1bfc36befb32c42b839ff19c11f5e8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635591260790328336, guid: ca1bfc36befb32c42b839ff19c11f5e8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.652
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

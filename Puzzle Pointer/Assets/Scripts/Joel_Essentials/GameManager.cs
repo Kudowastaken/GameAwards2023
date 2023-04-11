@@ -59,14 +59,20 @@ public class GameManager : MonoBehaviour
         {
             if (!button.IsPressed)
             {
-                Dragableblock.LevelHasBeenFinished = false;
+                foreach (var dragableBlock in FindObjectsOfType<Dragableblock>())
+                {
+                    dragableBlock.LevelHasBeenFinished = false;
+                }
                 return;
             }
         }
 
         nextLevelButton.enabled = true;
         nextLevelImage.enabled = true;
-        Dragableblock.LevelHasBeenFinished = true;
+        foreach (var dragableBlock in FindObjectsOfType<Dragableblock>())
+        {
+            dragableBlock.LevelHasBeenFinished = true;
+        }
     }
 
     public void LoadNextScene()
