@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class SoundSettings : MonoBehaviour
+public class SoundSettings : SingletonPersistent<SoundSettings> 
 {
     [SerializeField] Slider soundSlider;
-    [SerializeField] AudioMixer masterMixer;
+    [SerializeField] AudioMixer musicMixer;
     [SerializeField] AudioMixer SFXMixer;
     [SerializeField] Slider SFXSlider;
 
@@ -26,7 +26,7 @@ public class SoundSettings : MonoBehaviour
 
         RefreshSlider(_value);
         PlayerPrefs.SetFloat("SavedMasterVolume", _value);
-        masterMixer.SetFloat("MasterVolume", Mathf.Log10(_value / 100) * 20f);
+        musicMixer.SetFloat("MasterVolume", Mathf.Log10(_value / 100) * 20f);
     }
 
     public void SetSFX(float _value)
@@ -36,7 +36,7 @@ public class SoundSettings : MonoBehaviour
             _value = .001f;
         }
 
-        RefreshSlider(_value);
+        RefreshSFXSlider(_value);
         PlayerPrefs.SetFloat("SavedSFXVolume", _value);
         SFXMixer.SetFloat("SoundEffectVolume", Mathf.Log10(_value / 100) * 20f);
     }
@@ -47,7 +47,7 @@ public class SoundSettings : MonoBehaviour
 
     public void SetSFXFromSlider()
     {
-        SetVolume(SFXSlider.value);
+        SetSFX(SFXSlider.value);
     }
 
     public void RefreshSlider(float _value){
