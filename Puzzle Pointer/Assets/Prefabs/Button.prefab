@@ -105,6 +105,10 @@ MonoBehaviour:
   pressSFX: {fileID: 8300000, guid: 1ce6358e57942514da9e7a543d900be3, type: 3}
   connectedBlock: {fileID: 0}
   isPressed: 0
+  particleColor:
+    serializedVersion: 2
+    rgba: 0
+  SFXMixer: {fileID: 24300002, guid: bb6bc9c589abec645a0ffe2f47e5d4cb, type: 2}
 --- !u!58 &6138772821517242221
 CircleCollider2D:
   m_ObjectHideFlags: 0

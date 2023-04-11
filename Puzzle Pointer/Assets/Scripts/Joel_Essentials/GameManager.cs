@@ -90,5 +90,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManagerExtended.LoadScene(0);
+        PauseMenu.isPaused = false;
+        PauseMenu.Instance.myAnimator.Play("Close");
     }
 }

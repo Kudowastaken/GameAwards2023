@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ButtonScript : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ButtonScript : MonoBehaviour
     [SerializeField] private Dragableblock connectedBlock;
     [SerializeField] private bool isPressed = false;
     [SerializeField] private Color32 particleColor;
+    [SerializeField] private AudioMixerGroup SFXMixer; 
     public bool IsPressed { get => isPressed; private set => isPressed = value; }
     private SpriteRenderer myRenderer;
     private AudioSource myAudioSource;
@@ -24,6 +26,7 @@ public class ButtonScript : MonoBehaviour
 
         myRenderer.sprite = buttonSprite;
         myParticleSystem.startColor = particleColor;
+        myAudioSource.outputAudioMixerGroup = SFXMixer;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : SingletonPersistent<PauseMenu>
 {
     public static bool isPaused;
+    public static bool cantPause;
     GameObject pauseMenu;
-    Animator myAnimator;
+    public Animator myAnimator;
 
     [SerializeField] Button mainMenuButton;
 
@@ -36,6 +37,20 @@ public class PauseMenu : SingletonPersistent<PauseMenu>
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().buildIndex > 1)
+        {
+            cantPause = false;
+        }
+        else
+        {
+            cantPause = true;
+        }
+
+        if (cantPause)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             isPaused = !isPaused;
