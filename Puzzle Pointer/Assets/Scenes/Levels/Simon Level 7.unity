@@ -1692,6 +1692,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 348837062525079802, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 348837062525079802, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1960797286011257964, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1734,6 +1742,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1960797286011257964, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157789808785489083, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157789808785489083, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157789808785489083, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4696380237604591096, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
@@ -2066,6 +2086,7 @@ MonoBehaviour:
   defaultMusic: {fileID: 8300000, guid: 1157f384a83d5e74ba239800706fc4a3, type: 3}
   musicFadeDuration: 1
   musicVolume: 1
+  musicMixer: {fileID: 24300002, guid: 32e3f976a7a2d7a48ab89504885362cb, type: 2}
 --- !u!4 &1079995699
 Transform:
   m_ObjectHideFlags: 0
