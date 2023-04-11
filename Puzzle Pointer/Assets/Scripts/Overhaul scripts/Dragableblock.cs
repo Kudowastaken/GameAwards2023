@@ -43,8 +43,11 @@ public class Dragableblock : MonoBehaviour
     {
         myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
         childColliderSizeAtStart = childBoxCollider.size;
+<<<<<<< HEAD
         mySpriteMask.enabled = false;
+=======
         myAudioSource.outputAudioMixerGroup = SFXMixer;
+>>>>>>> ed4d5ee40b08a9cc8ac0e6ecf3a5d8311f6cd4f9
     }
 
     private void OnMouseDown()
