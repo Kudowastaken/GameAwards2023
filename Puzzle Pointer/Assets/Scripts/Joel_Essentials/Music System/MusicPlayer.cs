@@ -1,11 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class MusicPlayer : SingletonPersistent<MusicPlayer>
 {
     [SerializeField] AudioClip defaultMusic;
     [SerializeField] float musicFadeDuration = 1f;
     [SerializeField, Range(0f, 1f)] float musicVolume = 1f;
+
+    [SerializeField] AudioMixerGroup musicMixer;
 
     AudioSource activeAudioSource;
     AudioSource inactiveAudioSource;
@@ -44,6 +47,7 @@ public class MusicPlayer : SingletonPersistent<MusicPlayer>
         if (activeAudioSource != null) { inactiveAudioSource = activeAudioSource; }
 
         activeAudioSource = gameObject.AddComponent<AudioSource>();
+        activeAudioSource.outputAudioMixerGroup = musicMixer;
         activeAudioSource.clip = newMusic;
         activeAudioSource.loop = true;
     }
