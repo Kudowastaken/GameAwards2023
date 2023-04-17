@@ -11,10 +11,19 @@ public class Dragableblock : MonoBehaviour
     [SerializeField] private float blockMovesUpdateInterval;
     [SerializeField] private AudioClip moveSFX;
     [SerializeField] private AudioMixerGroup SFXMixer;
-    [SerializeField] private ParticleSystem UpParticle;
-    [SerializeField] private ParticleSystem DownParticle;
-    [SerializeField] private ParticleSystem LeftParticle;
-    [SerializeField] private ParticleSystem RightParticle;
+    [SerializeField] private ParticleSystem UpGrassParticle;
+    [SerializeField] private ParticleSystem DownGrassParticle;
+    [SerializeField] private ParticleSystem LeftGrassParticle;
+    [SerializeField] private ParticleSystem RightGrassParticle;
+    [SerializeField] private ParticleSystem UpDustParticle;
+    [SerializeField] private ParticleSystem DownDustParticle;
+    [SerializeField] private ParticleSystem LeftDustParticle;
+    [SerializeField] private ParticleSystem RightDustParticle;
+    [SerializeField] private ParticleSystem RightWallParticle;
+    [SerializeField] private ParticleSystem LeftWallParticle;
+    [SerializeField] private ParticleSystem UpWallParticle;
+    [SerializeField] private ParticleSystem DownWallParticle;
+
 
     private Rigidbody2D myRigidBody;
     private BoxCollider2D myBoxCollider;
@@ -79,10 +88,10 @@ public class Dragableblock : MonoBehaviour
         if(xMoreThan && Mathf.Abs(difference.x) < dragThreshold){return;}
         if(yMoreThan && Mathf.Abs(difference.y) < dragThreshold){return;}
         
-        if( xMoreThan && difference.x > 0) {direction = new Vector2(1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingHorizontally", true); ParticlePlayer(RightParticle); }
-        else if(xMoreThan && difference.x < 0) {direction = new Vector2(-1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingHorizontally", true); ParticlePlayer(LeftParticle); }
-        else if(yMoreThan && difference.y > 0) {direction = new Vector2(0, 1);isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingVertically", true); ParticlePlayer(UpParticle); }
-        else if (yMoreThan && difference.y < 0) { direction = new Vector2(0, -1); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingVertically", true); ParticlePlayer(DownParticle); }
+        if( xMoreThan && difference.x > 0) {direction = new Vector2(1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingHorizontally", true); ParticlePlayer(RightGrassParticle, RightDustParticle); }
+        else if(xMoreThan && difference.x < 0) {direction = new Vector2(-1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingHorizontally", true); ParticlePlayer(LeftGrassParticle, LeftDustParticle);  }
+        else if(yMoreThan && difference.y > 0) {direction = new Vector2(0, 1);isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingVertically", true); ParticlePlayer(UpGrassParticle, UpDustParticle);  }
+        else if (yMoreThan && difference.y < 0) { direction = new Vector2(0, -1); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingVertically", true); ParticlePlayer(DownGrassParticle, DownDustParticle);  }
         else return;
     }
 
@@ -101,10 +110,26 @@ public class Dragableblock : MonoBehaviour
             myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
             boxAnimator.SetBool("IsMovingHorizontally", false);
             boxAnimator.SetBool("IsMovingVertically", false);
-            ParticleStopper(UpParticle);
-            ParticleStopper(DownParticle);
-            ParticleStopper(RightParticle);
-            ParticleStopper(LeftParticle);
+            ParticleStopper(UpGrassParticle, UpDustParticle);
+            ParticleStopper(DownGrassParticle, DownDustParticle);
+            ParticleStopper(RightGrassParticle, RightDustParticle);
+            ParticleStopper(LeftGrassParticle, LeftDustParticle);
+            if (xMoreThan && difference.x > 0)
+            {
+                RightWallParticle.Play();
+            }
+            if (xMoreThan && difference.x < 0)
+            {
+                LeftWallParticle.Play();
+            }
+            if (yMoreThan && difference.y > 0)
+            {
+                UpWallParticle.Play();
+            }
+            if (yMoreThan && difference.y < 0)
+            {
+                DownWallParticle.Play();
+            }
         }
     }
 
@@ -140,10 +165,26 @@ public class Dragableblock : MonoBehaviour
             myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
             boxAnimator.SetBool("IsMovingHorizontally", false);
             boxAnimator.SetBool("IsMovingVertically", false);
-            ParticleStopper(UpParticle);
-            ParticleStopper(DownParticle);
-            ParticleStopper(RightParticle);
-            ParticleStopper(LeftParticle);
+            ParticleStopper(UpGrassParticle, UpDustParticle);
+            ParticleStopper(DownGrassParticle, DownDustParticle);
+            ParticleStopper(RightGrassParticle, RightDustParticle);
+            ParticleStopper(LeftGrassParticle, LeftDustParticle);
+            if (xMoreThan && difference.x > 0)
+            {
+                RightWallParticle.Play();
+            }
+            if (xMoreThan && difference.x < 0)
+            {
+                LeftWallParticle.Play();
+            }
+            if (yMoreThan && difference.y > 0)
+            {
+                UpWallParticle.Play();
+            }
+            if (yMoreThan && difference.y < 0) 
+            {
+                DownWallParticle.Play();
+            }
         }
     }
 
@@ -158,22 +199,26 @@ public class Dragableblock : MonoBehaviour
         
     }
 
-    void ParticlePlayer(ParticleSystem DragBlockParticles)
+    void ParticlePlayer(ParticleSystem GrassDragBlockParticles, ParticleSystem DustDragBlockParticles)
     {
-        currentParticleSystem = DragBlockParticles;
-        if (!DragBlockParticles.isEmitting)
+        currentParticleSystem = GrassDragBlockParticles;
+        currentParticleSystem = DustDragBlockParticles;
+        if (!GrassDragBlockParticles.isEmitting && !DustDragBlockParticles.isEmitting)
         {
-            DragBlockParticles.Play();
+            GrassDragBlockParticles.Play();
+            DustDragBlockParticles.Play();
         }
     }
 
-    void ParticleStopper(ParticleSystem DragBlockParticles)
+    void ParticleStopper(ParticleSystem GrassDragBlockParticles, ParticleSystem DustDragBlockParticles)
     {
-        currentParticleSystem = DragBlockParticles;
+        currentParticleSystem = GrassDragBlockParticles;
+        currentParticleSystem = DustDragBlockParticles;
 
-        if (DragBlockParticles.isEmitting)
+        if (GrassDragBlockParticles.isEmitting && DustDragBlockParticles.isEmitting)
         {
-            DragBlockParticles.Stop();
+            GrassDragBlockParticles.Stop();
+            DustDragBlockParticles.Stop();
         }
     }
 }
