@@ -77,6 +77,10 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextScene()
     {
+        if (PauseMenu.isPaused)
+        {
+            return;
+        }
         SceneManagerExtended.LoadNextScene();
     }
 
