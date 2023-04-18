@@ -115,6 +115,10 @@ public class Dragableblock : MonoBehaviour
             ParticleStopper(DownGrassParticle, DownDustParticle);
             ParticleStopper(RightGrassParticle, RightDustParticle);
             ParticleStopper(LeftGrassParticle, LeftDustParticle);
+            if (LevelHasBeenFinished)
+            {
+                return;
+            }
             if (xMoreThan && difference.x > 0)
             {
                 RightWallParticle.Play();
@@ -131,7 +135,6 @@ public class Dragableblock : MonoBehaviour
             {
                 DownWallParticle.Play();
             }
-            Debug.Log("OnCollisionEnter2D got called properly");
         }
     }
 
@@ -172,23 +175,6 @@ public class Dragableblock : MonoBehaviour
             ParticleStopper(DownGrassParticle, DownDustParticle);
             ParticleStopper(RightGrassParticle, RightDustParticle);
             ParticleStopper(LeftGrassParticle, LeftDustParticle);
-            if (xMoreThan && difference.x > 0)
-            {
-                RightWallParticle.Play();
-            }
-            if (xMoreThan && difference.x < 0)
-            {
-                LeftWallParticle.Play();
-            }
-            if (yMoreThan && difference.y > 0)
-            {
-                UpWallParticle.Play();
-            }
-            if (yMoreThan && difference.y < 0) 
-            {
-                DownWallParticle.Play();
-            }
-            Debug.Log("Stop moving got called properly");
         }
     }
 
