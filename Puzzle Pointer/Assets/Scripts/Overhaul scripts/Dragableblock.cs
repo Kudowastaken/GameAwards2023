@@ -99,6 +99,7 @@ public class Dragableblock : MonoBehaviour
     {
         if (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("DragableBlock") || collision.transform.CompareTag("DragableCollider"))
         {
+            Debug.Log("OnCollisionEnter2D got called");
             isMoving = false;
             mouseReleased = true;
             movingBlock = null;
@@ -130,6 +131,7 @@ public class Dragableblock : MonoBehaviour
             {
                 DownWallParticle.Play();
             }
+            Debug.Log("OnCollisionEnter2D got called properly");
         }
     }
 
@@ -154,6 +156,7 @@ public class Dragableblock : MonoBehaviour
         
         if (myRigidBody.velocity == new Vector2(0, 0) || Mathf.Abs(myRigidBody.velocity.x) < 0.1f && myRigidBody.velocity.y == 0f || Mathf.Abs(myRigidBody.velocity.y) < 0.1f && myRigidBody.velocity.x == 0f)
         {
+            Debug.Log("Stop moving got called");
             isMoving = false;
             mouseReleased = true;
             movingBlock = null;
@@ -185,6 +188,7 @@ public class Dragableblock : MonoBehaviour
             {
                 DownWallParticle.Play();
             }
+            Debug.Log("Stop moving got called properly");
         }
     }
 
