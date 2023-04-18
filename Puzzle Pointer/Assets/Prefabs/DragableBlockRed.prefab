@@ -4853,8 +4853,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1277687016996982870}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.007, y: 0.106, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: -0.007, y: -0.004, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5207928493020615325}
@@ -4901,8 +4901,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 41fcbfec22191d24f861e4c1c8d1c634, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9f3b4e7db3042584eb16511195f8150c, type: 3}
+  m_Color: {r: 1, g: 0.21383637, b: 0.22779211, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -49091,7 +49091,7 @@ Transform:
   - {fileID: 3322857472839192808}
   - {fileID: 1379255995712936813}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8962025497968234961
 MonoBehaviour:
@@ -49106,7 +49106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childBoxCollider: {fileID: 3375040564463219039}
-  dragThreshold: 35
+  dragThreshold: 75
   moveSpeed: 50
   blockMovesUpdateInterval: 0.03
   moveSFX: {fileID: 8300000, guid: f95c00eadfbaed64e9093d0a2ad92533, type: 3}
