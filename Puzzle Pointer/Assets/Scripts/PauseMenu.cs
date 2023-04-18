@@ -32,7 +32,7 @@ public class PauseMenu : SingletonPersistent<PauseMenu>
 
     private void OnLevelWasLoaded(int level)
     {
-        mainMenuButton.onClick.AddListener(FindObjectOfType<GameManager>().MainMenu);
+           mainMenuButton.onClick.AddListener(FindObjectOfType<MenuManager>().MainMenu);
     }
 
     void Update()

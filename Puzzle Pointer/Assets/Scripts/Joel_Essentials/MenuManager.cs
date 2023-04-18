@@ -1,6 +1,6 @@
 using UnityEngine;
 public class MenuManager : MonoBehaviour
-{
+{ 
     public void NextScene()
     {
         SceneManagerExtended.LoadNextScene();
@@ -23,6 +23,9 @@ public class MenuManager : MonoBehaviour
 
     public void MainMenu()
     {
-        
+        Time.timeScale = 1f;
+        SceneManagerExtended.LoadScene(0);
+        PauseMenu.isPaused = false;
+        PauseMenu.Instance.myAnimator.Play("Close");
     }
 }
