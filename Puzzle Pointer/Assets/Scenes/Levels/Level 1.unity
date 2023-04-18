@@ -2795,6 +2795,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: pressSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 31e352ff2ae31824fa56974e132f3609, type: 3}
+    - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: connectedBlock
       value: 
       objectReference: {fileID: 0}
