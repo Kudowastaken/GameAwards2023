@@ -10,6 +10,7 @@ public class Dragableblock : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float blockMovesUpdateInterval;
     [SerializeField] private AudioClip moveSFX;
+    [SerializeField] private AudioClip wallHitSFX;
     [SerializeField] private AudioMixerGroup SFXMixer;
     [SerializeField] private ParticleSystem UpGrassParticle;
     [SerializeField] private ParticleSystem DownGrassParticle;
@@ -115,6 +116,8 @@ public class Dragableblock : MonoBehaviour
             ParticleStopper(DownGrassParticle, DownDustParticle);
             ParticleStopper(RightGrassParticle, RightDustParticle);
             ParticleStopper(LeftGrassParticle, LeftDustParticle);
+            myAudioSource.clip = wallHitSFX;
+            myAudioSource.Play();
             if (LevelHasBeenFinished)
             {
                 return;
@@ -175,6 +178,7 @@ public class Dragableblock : MonoBehaviour
             ParticleStopper(DownGrassParticle, DownDustParticle);
             ParticleStopper(RightGrassParticle, RightDustParticle);
             ParticleStopper(LeftGrassParticle, LeftDustParticle);
+            myAudioSource.Stop();
         }
     }
 

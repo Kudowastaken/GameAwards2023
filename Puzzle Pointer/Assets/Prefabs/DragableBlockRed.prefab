@@ -49107,9 +49107,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   childBoxCollider: {fileID: 3375040564463219039}
   dragThreshold: 75
-  moveSpeed: 35
+  moveSpeed: 25
   blockMovesUpdateInterval: 0.03
-  moveSFX: {fileID: 8300000, guid: f95c00eadfbaed64e9093d0a2ad92533, type: 3}
+  moveSFX: {fileID: 8300000, guid: f0ad7bab30ff65a4aace081819857d1f, type: 3}
+  wallHitSFX: {fileID: 8300000, guid: 2f93f90ef5a5bf643967b79dafb1ac45, type: 3}
   SFXMixer: {fileID: 24300002, guid: bb6bc9c589abec645a0ffe2f47e5d4cb, type: 2}
   UpGrassParticle: {fileID: 3867737733873251471}
   DownGrassParticle: {fileID: 2476494317010104552}
