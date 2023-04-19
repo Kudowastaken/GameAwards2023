@@ -35,6 +35,7 @@ public class ButtonScript : MonoBehaviour
         if (hit == connectedBlock)
         {
             IsPressed = true;
+            connectedBlock.BlockIsOnButton = true;
             myAudioSource.clip = pressSFX;
             myAudioSource.Play();
             myParticleSystem.Play();
@@ -47,6 +48,7 @@ public class ButtonScript : MonoBehaviour
         if (hit == connectedBlock)
         {
             IsPressed = false;
+            connectedBlock.BlockIsOnButton = false;
         }
     }
 }
