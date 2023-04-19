@@ -137,11 +137,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6123512515466531928, guid: b9528ebe55f7b2346bcb385d57467204, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: -0.586
       objectReference: {fileID: 0}
     - target: {fileID: 6123512515466531928, guid: b9528ebe55f7b2346bcb385d57467204, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.5
+      value: -2.42
       objectReference: {fileID: 0}
     - target: {fileID: 6123512515466531928, guid: b9528ebe55f7b2346bcb385d57467204, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1726,6 +1726,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 945134852}
     - target: {fileID: 6991507455242932954, guid: 5dab0cc1adb49db45a4c2ae62aa5052c, type: 3}
+      propertyPath: challangeDisplay
+      value: 
+      objectReference: {fileID: 945134853}
+    - target: {fileID: 6991507455242932954, guid: 5dab0cc1adb49db45a4c2ae62aa5052c, type: 3}
       propertyPath: buttonScripts.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1991,6 +1995,17 @@ PrefabInstance:
 --- !u!114 &945134852 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 420518854889874090, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+  m_PrefabInstance: {fileID: 945134851}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &945134853 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5192483798931915708, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
   m_PrefabInstance: {fileID: 945134851}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -2323,11 +2338,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5207928493020615325, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.5
+      value: -5.414
       objectReference: {fileID: 0}
     - target: {fileID: 5207928493020615325, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: 2.424
       objectReference: {fileID: 0}
     - target: {fileID: 5207928493020615325, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
       propertyPath: m_LocalPosition.z
