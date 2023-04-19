@@ -10,12 +10,14 @@ public class SoundSettings : SingletonPersistent<SoundSettings>
     [SerializeField] AudioMixer masterMixer;
     [SerializeField] AudioMixer SFXMixer;
     [SerializeField] Slider SFXSlider;
+    [SerializeField] AudioMixer wallImpactMixer;
 
     // Start is called before the first frame update
     void Start()
     {
         SetVolume(PlayerPrefs.GetFloat("SavedMasterVolume", 100));
         SetSFX(PlayerPrefs.GetFloat("SavedSFXVolume", 100));
+        SetSFX(PlayerPrefs.GetFloat("SavedWallImpactVolume", 100));
     }
 
     public void SetVolume(float _value)
@@ -38,7 +40,9 @@ public class SoundSettings : SingletonPersistent<SoundSettings>
 
         RefreshSFXSlider(_value);
         PlayerPrefs.SetFloat("SavedSFXVolume", _value);
+        PlayerPrefs.SetFloat("SavedWallImpactVolume", _value);
         SFXMixer.SetFloat("SoundEffectVolume", Mathf.Log10(_value / 100) * 20f);
+        wallImpactMixer.SetFloat("WallImpactVolume", Mathf.Log10(_value / 100) * 20f);
     }
 
     public void SetVolumeFromSlider(){
