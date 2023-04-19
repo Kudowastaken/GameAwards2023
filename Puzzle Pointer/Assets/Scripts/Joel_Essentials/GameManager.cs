@@ -9,8 +9,12 @@ public class GameManager : MonoBehaviour
     private Image nextLevelImage;
     private Button mainMenuGameButton;
     [SerializeField] private TMP_Text moveDisplay;
+    [SerializeField] private TMP_Text challangeDisplay;
     [SerializeField] private ButtonScript[] buttonScripts;
     [SerializeField] private float textUpdateInterval;
+
+    public static bool currentLevelHasBeenFinished = false;
+    private bool isLoadingNextScene = false;
 
     private void Start()
     {
@@ -22,10 +26,19 @@ public class GameManager : MonoBehaviour
         nextLevelButton.onClick.AddListener(LoadNextScene);
         restartLevelButton = GameObject.FindGameObjectWithTag("RestartLevelButton").GetComponent<Button>();
         restartLevelButton.onClick.AddListener(ReloadScene);
+        isLoadingNextScene = false;
     }
 
     private void Update()
     {
+        if (!currentLevelHasBeenFinished)
+        {
+            challangeDisplay.enabled = false;
+        }
+        else
+        {
+            challangeDisplay.enabled = true;
+        }
         GameIsPaused();
         UpdateMovesText();
         CheckForButtons();
@@ -55,6 +68,7 @@ public class GameManager : MonoBehaviour
 
     private void CheckForButtons()
     {
+        if (isLoadingNextScene) { return; }
         foreach (ButtonScript button in buttonScripts)
         {
             if (!button.IsPressed)
@@ -69,6 +83,8 @@ public class GameManager : MonoBehaviour
 
         nextLevelButton.enabled = true;
         nextLevelImage.enabled = true;
+        currentLevelHasBeenFinished = true;
+        challangeDisplay.enabled = true;
         foreach (var dragableBlock in FindObjectsOfType<Dragableblock>())
         {
             dragableBlock.LevelHasBeenFinished = true;
@@ -81,12 +97,13 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+        isLoadingNextScene = true;
         SceneManagerExtended.LoadNextScene();
+        currentLevelHasBeenFinished = false;
     }
 
     public void ReloadScene()
     {
-        Debug.Log("Reloading scene");
         SceneManagerExtended.ReloadScene();
     }
 

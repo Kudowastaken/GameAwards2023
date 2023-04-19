@@ -18,7 +18,6 @@ public class CameraShake : MonoBehaviour
 
     public void ShakeCamera(float intensity, float time)
     {
-        Debug.Log("ShakeCamera got called");
         _cinemachineShake.m_AmplitudeGain = intensity;
 
         startingIntensity = intensity;
