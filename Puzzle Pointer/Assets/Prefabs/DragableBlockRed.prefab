@@ -49198,9 +49198,11 @@ MonoBehaviour:
   wallHitSFX: {fileID: 8300000, guid: 2f93f90ef5a5bf643967b79dafb1ac45, type: 3}
   wallMixerGroup: {fileID: 24300002, guid: 00afe7781e7ea0a4fbb7d3aef391fcdd, type: 2}
   SFXMixer: {fileID: 24300002, guid: bb6bc9c589abec645a0ffe2f47e5d4cb, type: 2}
-  whenOnButtonSprite: {fileID: 21300000, guid: f09d0f611b0ebbf4290cb2ebcc8c89f3, type: 3}
-  startingSprite: {fileID: 21300000, guid: 9f3b4e7db3042584eb16511195f8150c, type: 3}
   eyesVisualRenderer: {fileID: 339296291028510093}
+  startingSprite: {fileID: 21300000, guid: 9f3b4e7db3042584eb16511195f8150c, type: 3}
+  whenOnButtonSprite: {fileID: 21300000, guid: f09d0f611b0ebbf4290cb2ebcc8c89f3, type: 3}
+  shakeIntensity: 0.1
+  shakeTime: 0.15
   UpGrassParticle: {fileID: 3867737733873251471}
   DownGrassParticle: {fileID: 2476494317010104552}
   LeftGrassParticle: {fileID: 6662589967820197882}

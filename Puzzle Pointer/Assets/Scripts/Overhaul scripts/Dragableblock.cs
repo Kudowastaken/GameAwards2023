@@ -13,6 +13,13 @@ public class Dragableblock : MonoBehaviour
     [SerializeField] private AudioClip wallHitSFX;
     [SerializeField] private AudioMixerGroup wallMixerGroup;
     [SerializeField] private AudioMixerGroup SFXMixer;
+    [SerializeField] private SpriteRenderer eyesVisualRenderer;
+    [SerializeField] private Sprite startingSprite;
+    [SerializeField] private Sprite whenOnButtonSprite;
+    [SerializeField] private float shakeIntensity;
+    [SerializeField] private float shakeTime;
+    [Space(10)]
+    [Header("Particles")]
     [SerializeField] private ParticleSystem UpGrassParticle;
     [SerializeField] private ParticleSystem DownGrassParticle;
     [SerializeField] private ParticleSystem LeftGrassParticle;
@@ -46,6 +53,7 @@ public class Dragableblock : MonoBehaviour
     private static Dragableblock movingBlock;
     public static float BlockMoves { get; set; }
     public bool LevelHasBeenFinished { get; set; }
+    public bool BlockIsOnButton { get; set; }
     private void Awake()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -60,6 +68,30 @@ public class Dragableblock : MonoBehaviour
         myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
         childColliderSizeAtStart = childBoxCollider.size;
         mySpriteMask.enabled = false;
+        eyesVisualRenderer.sprite = whenOnButtonSprite;
+    }
+
+    private void Update()
+    {
+        if(BlockIsOnButton)
+        {
+            eyesVisualRenderer.sprite = whenOnButtonSprite;
+        }
+        else
+        {
+            eyesVisualRenderer.sprite = startingSprite;
+        }
+        if (LevelHasBeenFinished)
+        {
+            mySpriteMask.enabled = true;
+            boxAnimator.SetBool("IsLevelComplete", true);
+        }
+        else
+        {
+            mySpriteMask.enabled = false;
+            boxAnimator.SetBool("IsLevelComplete", false);
+        }
+        StopMoving();
     }
 
     private void OnMouseDown()
@@ -120,6 +152,7 @@ public class Dragableblock : MonoBehaviour
             myAudioSource.clip = wallHitSFX;
             myAudioSource.outputAudioMixerGroup = wallMixerGroup;
             myAudioSource.Play();
+            CameraShake.Instance.ShakeCamera(shakeIntensity, shakeTime);
             if (LevelHasBeenFinished)
             {
                 return;
@@ -141,21 +174,6 @@ public class Dragableblock : MonoBehaviour
                 DownWallParticle.Play();
             }
         }
-    }
-
-    private void Update()
-    {
-        if (LevelHasBeenFinished)
-        {
-            mySpriteMask.enabled = true;
-            boxAnimator.SetBool("IsLevelComplete", true);
-        }
-        else
-        {
-            mySpriteMask.enabled = false;
-            boxAnimator.SetBool("IsLevelComplete", false);
-        }
-        StopMoving();
     }
 
     private void StopMoving()
