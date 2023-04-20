@@ -3251,7 +3251,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.25
+  - time: 2.75
     functionName: NextScene
     data: 
     objectReferenceParameter: {fileID: 0}
