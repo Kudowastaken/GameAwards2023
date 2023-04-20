@@ -1,8 +1,14 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class MenuManager : MonoBehaviour
-{ 
+{
     public void NextScene()
     {
+        if (SceneManager.sceneCountInBuildSettings == 1)
+        {
+            AnimationEvents.hasWatchedTutorial = true;
+        }
         SceneManagerExtended.LoadNextScene();
     }
     

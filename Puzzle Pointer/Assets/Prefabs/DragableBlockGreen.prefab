@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 339296291028510093, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8b736debec307de4094ed527a7b1eb2c, type: 3}
+    - target: {fileID: 339296291028510093, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
       propertyPath: m_Color.b
       value: 0.2699896
       objectReference: {fileID: 0}
@@ -24,6 +28,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2438558653517021472, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 20985842f8d56074a8e09461ad9783d2, type: 3}
     - target: {fileID: 2438558653517021472, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -109,9 +117,17 @@ PrefabInstance:
       value: DragableBlockGreen
       objectReference: {fileID: 0}
     - target: {fileID: 8962025497968234961, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
+      propertyPath: startingSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8b736debec307de4094ed527a7b1eb2c, type: 3}
+    - target: {fileID: 8962025497968234961, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
       propertyPath: overlapSoundVolume
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 8962025497968234961, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
+      propertyPath: whenOnButtonSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 27f7811f03f1df5489394900d1e5e9dc, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
