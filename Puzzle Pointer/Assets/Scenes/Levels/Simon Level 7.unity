@@ -1854,6 +1854,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6486986959209590455, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9150943
+      objectReference: {fileID: 0}
+    - target: {fileID: 6486986959209590455, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.g
+      value: 0.48056835
+      objectReference: {fileID: 0}
+    - target: {fileID: 6486986959209590455, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.r
+      value: 0.75800085
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567651464860086229, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567651464860086229, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.r
+      value: 0.61718273
+      objectReference: {fileID: 0}
     - target: {fileID: 7953044074265702755, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1901,14 +1921,14 @@ PrefabInstance:
     - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: buttonSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1120811ef365f744eabdc647b3538ad2, type: 3}
+      objectReference: {fileID: 21300000, guid: 0e084d8b5682bfb459088aec89718213, type: 3}
     - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: connectedBlock
       value: 
       objectReference: {fileID: 1617232325}
     - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: particleColor.rgba
-      value: 4294936789
+      value: 4294901925
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3572,6 +3592,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button
       objectReference: {fileID: 0}
+    - target: {fileID: 6486986959209590455, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.b
+      value: 0.627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 6486986959209590455, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.g
+      value: 0.627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 6486986959209590455, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7953044074265702755, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -3622,7 +3654,7 @@ PrefabInstance:
       objectReference: {fileID: 2060138674}
     - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: particleColor.rgba
-      value: 4287138047
+      value: 4278190335
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3718,6 +3750,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6567651464860086229, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567651464860086229, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567651464860086229, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.r
+      value: 0.051607132
+      objectReference: {fileID: 0}
     - target: {fileID: 7953044074265702755, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -3765,14 +3809,14 @@ PrefabInstance:
     - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: buttonSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 867932aa078c50145b54d44c47306386, type: 3}
+      objectReference: {fileID: 21300000, guid: 2f055ff12b36bc94cbf123d4aff5b70c, type: 3}
     - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: connectedBlock
       value: 
       objectReference: {fileID: 91888057}
     - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: particleColor.rgba
-      value: 4287168404
+      value: 4278255386
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

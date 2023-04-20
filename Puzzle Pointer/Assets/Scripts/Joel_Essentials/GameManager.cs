@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip winSFX;
     [SerializeField] private AudioMixerGroup SFXMixer;
 
-    private static bool currentLevelHasBeenFinished = false;
+    public static bool currentLevelHasBeenFinished = false;
     private bool isLoadingNextScene = false;
     private bool hasPlayedWinSound;
 
@@ -39,14 +39,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!currentLevelHasBeenFinished)
-        {
-            challengeDisplay.enabled = false;
-        }
-        else
-        {
-            challengeDisplay.enabled = true;
-        }
+        
         GameIsPaused();
         UpdateMovesText();
         CheckForButtons();
@@ -91,8 +84,7 @@ public class GameManager : MonoBehaviour
 
         nextLevelButton.enabled = true;
         nextLevelImage.enabled = true;
-        currentLevelHasBeenFinished = true;
-        challengeDisplay.enabled = true;
+        
         if (!hasPlayedWinSound)
         {
             myAudioSource.clip = winSFX;
@@ -115,7 +107,6 @@ public class GameManager : MonoBehaviour
         }
         isLoadingNextScene = true;
         SceneManagerExtended.LoadNextScene();
-        currentLevelHasBeenFinished = false;
     }
 
     public void ReloadScene()

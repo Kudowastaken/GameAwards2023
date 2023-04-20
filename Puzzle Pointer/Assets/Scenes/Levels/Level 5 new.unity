@@ -1679,7 +1679,7 @@ PrefabInstance:
     - target: {fileID: 6991507455242932954, guid: 5dab0cc1adb49db45a4c2ae62aa5052c, type: 3}
       propertyPath: buttonScripts.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1533961923}
     - target: {fileID: 6991507455242932954, guid: 5dab0cc1adb49db45a4c2ae62aa5052c, type: 3}
       propertyPath: buttonScripts.Array.data[1]
       value: 
@@ -2502,6 +2502,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
+--- !u!114 &1441273315 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8962025497968234961, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
+  m_PrefabInstance: {fileID: 1441273314}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8417cffd75264394c833a3a66c6b3d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1495403285
 GameObject:
   m_ObjectHideFlags: 0
@@ -2614,14 +2625,33 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: buttonSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0e084d8b5682bfb459088aec89718213, type: 3}
+    - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: connectedBlock
       value: 
+      objectReference: {fileID: 1441273315}
+    - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: particleColor.rgba
+      value: 4278190335
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+--- !u!114 &1533961923 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+  m_PrefabInstance: {fileID: 1533961922}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8409f25859e4cd479481b6f371cf8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1556032441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3578,6 +3608,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6567651464860086229, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.b
+      value: 0.08218217
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567651464860086229, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567651464860086229, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7953044074265702755, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -3625,14 +3667,14 @@ PrefabInstance:
     - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: buttonSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 867932aa078c50145b54d44c47306386, type: 3}
+      objectReference: {fileID: 21300000, guid: 2f055ff12b36bc94cbf123d4aff5b70c, type: 3}
     - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: connectedBlock
       value: 
       objectReference: {fileID: 91888057}
     - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: particleColor.rgba
-      value: 4287168404
+      value: 4278255386
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -3825,6 +3825,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: buttonSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0e084d8b5682bfb459088aec89718213, type: 3}
+    - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: connectedBlock
       value: 
       objectReference: {fileID: 2060138674}

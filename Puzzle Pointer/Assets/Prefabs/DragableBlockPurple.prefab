@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 339296291028510093, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 076b14be2114f9b4bb143473df027a68, type: 3}
+    - target: {fileID: 339296291028510093, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
@@ -20,6 +24,18 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.65074766
       objectReference: {fileID: 0}
+    - target: {fileID: 761521512442617070, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 761521512442617070, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2438558653517021472, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 641df65b6ada0b24e84770b2be78ecc1, type: 3}
     - target: {fileID: 2438558653517021472, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -100,6 +116,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragableBlockPurple
       objectReference: {fileID: 0}
+    - target: {fileID: 8962025497968234961, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
+      propertyPath: whenOnButtonSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d800224de2bd7804ea06c8acb5d3200e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

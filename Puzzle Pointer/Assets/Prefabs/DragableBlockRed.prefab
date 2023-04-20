@@ -49323,8 +49323,8 @@ MonoBehaviour:
   glowVisualRenderer: {fileID: 5460824734940603662}
   startingSprite: {fileID: 21300000, guid: 9f3b4e7db3042584eb16511195f8150c, type: 3}
   whenOnButtonSprite: {fileID: 21300000, guid: f09d0f611b0ebbf4290cb2ebcc8c89f3, type: 3}
-  shakeIntensity: 0.1
-  shakeTime: 0.3
+  shakeIntensity: 0.08
+  shakeTime: 0.25
   wallHitSource: {fileID: 9160054653183956916}
   blockHitSource: {fileID: 4491454111287223385}
   overlapSoundVolume: 0.2

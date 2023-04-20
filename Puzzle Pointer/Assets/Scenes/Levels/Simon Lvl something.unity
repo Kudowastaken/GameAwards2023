@@ -4347,6 +4347,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CornerBottomLeft (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5105431519980379690, guid: ee2ec9b4a1eb9aa49afe2273b74de9e0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c0c7024b742411340b2c2589802ae731, type: 3}
     - target: {fileID: 6779102478256341699, guid: ee2ec9b4a1eb9aa49afe2273b74de9e0, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -4518,6 +4522,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button
       objectReference: {fileID: 0}
+    - target: {fileID: 6486986959209590455, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6487004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6486986959209590455, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.g
+      value: 0.627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 6486986959209590455, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7953044074265702755, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -4568,7 +4584,7 @@ PrefabInstance:
       objectReference: {fileID: 2060138674}
     - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: particleColor.rgba
-      value: 4287138047
+      value: 4278190335
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
