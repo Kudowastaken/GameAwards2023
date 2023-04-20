@@ -9,6 +9,9 @@ public class AnimationEvents : MonoBehaviour
     public static bool hasWatchedTutorial = false;
     private Animator myAnimator;
     private static readonly int Opening = Animator.StringToHash("Opening");
+    private static readonly int Closing = Animator.StringToHash("Closing");
+    private static readonly int OpeningNoTrans = Animator.StringToHash("OpeningNoTrans");
+
     [SerializeField] private AudioClip openRumbling;
     [SerializeField] private AudioClip closingRumbling;
     [SerializeField] private AudioClip closingImpact;
@@ -37,6 +40,27 @@ public class AnimationEvents : MonoBehaviour
     {
         myAnimator.SetBool(Opening, true);
     }
+
+    public void GetNextLevelBool()
+    {
+        FindObjectOfType<ScreenFadeAnimationEvent>().DisableNextLevelBool();
+    }
+
+    public void PlayClosingAnim()
+    {
+        myAnimator.SetBool(Closing, true);
+    }
+
+    public void playOpeningNoTransAnim()
+    {
+        myAnimator.SetBool(OpeningNoTrans, true);
+    }
+
+    public void Stoptheanim()
+    {
+        myAnimator.SetBool(OpeningNoTrans, false);
+    }
+
 
     public void OpeningRumbling()
     {

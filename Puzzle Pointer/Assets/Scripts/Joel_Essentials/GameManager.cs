@@ -29,9 +29,9 @@ public class GameManager : MonoBehaviour
         nextLevelButton.enabled = false;
         nextLevelImage = GameObject.FindGameObjectWithTag("NextLevelButton").GetComponent<Image>();
         nextLevelImage.enabled = false;
-        nextLevelButton.onClick.AddListener(LoadNextScene);
+        //nextLevelButton.onClick.AddListener(LoadNextScene);
         restartLevelButton = GameObject.FindGameObjectWithTag("RestartLevelButton").GetComponent<Button>();
-        restartLevelButton.onClick.AddListener(ReloadScene);
+        //restartLevelButton.onClick.AddListener(ReloadScene);
         isLoadingNextScene = false;
         myAudioSource = GetComponent<AudioSource>();
         hasPlayedWinSound = false;

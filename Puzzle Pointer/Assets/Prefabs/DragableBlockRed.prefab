@@ -49315,7 +49315,7 @@ MonoBehaviour:
   moveSpeed: 25
   blockMovesUpdateInterval: 0.03
   moveSFX: {fileID: 8300000, guid: f0ad7bab30ff65a4aace081819857d1f, type: 3}
-  wallHitSFX: {fileID: 8300000, guid: 2f93f90ef5a5bf643967b79dafb1ac45, type: 3}
+  wallHitSFX: {fileID: 8300000, guid: 5e04a47fc615e2f49b9809f13383a192, type: 3}
   wallMixerGroup: {fileID: 24300002, guid: 00afe7781e7ea0a4fbb7d3aef391fcdd, type: 2}
   wallMixer: {fileID: 24100000, guid: 00afe7781e7ea0a4fbb7d3aef391fcdd, type: 2}
   SFXMixer: {fileID: 24300002, guid: bb6bc9c589abec645a0ffe2f47e5d4cb, type: 2}
@@ -49324,7 +49324,7 @@ MonoBehaviour:
   startingSprite: {fileID: 21300000, guid: 9f3b4e7db3042584eb16511195f8150c, type: 3}
   whenOnButtonSprite: {fileID: 21300000, guid: f09d0f611b0ebbf4290cb2ebcc8c89f3, type: 3}
   shakeIntensity: 0.1
-  shakeTime: 0.15
+  shakeTime: 0.3
   wallHitSource: {fileID: 9160054653183956916}
   blockHitSource: {fileID: 4491454111287223385}
   overlapSoundVolume: 0.2

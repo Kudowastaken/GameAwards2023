@@ -505,10 +505,21 @@ PrefabInstance:
     - {fileID: 3876958474919662265, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 416138247479652311, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
-      insertIndex: -1
+      insertIndex: 3
       addedObject: {fileID: 979453803}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+--- !u!114 &824582920 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5059495566109075622, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+  m_PrefabInstance: {fileID: 824582917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1dc248cd292864c98654c6f9c34f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &979330351
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,9 +740,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1166533924}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: NextScene
+      - m_Target: {fileID: 824582920}
+        m_TargetAssemblyTypeName: ScreenFadeAnimationEvent, Assembly-CSharp
+        m_MethodName: ScreenFadeOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -840,17 +851,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c549c7b8e3bf93941977cc0149d72930, type: 3}
---- !u!114 &1166533924 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 462387035966677122, guid: c549c7b8e3bf93941977cc0149d72930, type: 3}
-  m_PrefabInstance: {fileID: 1166533923}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db8b139e01693654d9e2b30014b4d879, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1356211803
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MenuOpenAnim
+  m_Name: MenuOpenAnim 1
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -5002,13 +5002,6 @@ AnimationClip:
     messageOptions: 0
   - time: 0.16666667
     functionName: OpeningRumbling
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 2.75
-    functionName: NextScene
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

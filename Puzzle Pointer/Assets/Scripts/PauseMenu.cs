@@ -8,7 +8,7 @@ public class PauseMenu : SingletonPersistent<PauseMenu>
 {
     public static bool isPaused;
     public static bool cantPause;
-    GameObject pauseMenu;
+    // GameObject pauseMenu;
     public Animator myAnimator;
 
     [SerializeField] Button mainMenuButton;
@@ -19,7 +19,7 @@ public class PauseMenu : SingletonPersistent<PauseMenu>
 
     private void Start()
     {
-        pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
+        // pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
         isPaused = false;
         myAnimator = GetComponent<Animator>();
 
