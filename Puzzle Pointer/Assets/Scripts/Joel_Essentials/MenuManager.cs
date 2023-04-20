@@ -34,4 +34,10 @@ public class MenuManager : MonoBehaviour
         PauseMenu.isPaused = false;
         PauseMenu.Instance.myAnimator.Play("Close");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("quit");
+    }
 }

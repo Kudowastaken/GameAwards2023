@@ -186,15 +186,10 @@ public class Dragableblock : MonoBehaviour
         }
         if (collision.transform.CompareTag("DragableBlock") || collision.transform.CompareTag("DragableCollider"))
         {
+            blockHitSource.outputAudioMixerGroup = wallMixerGroup;
             blockHitSource.clip = wallHitSFX;
             blockHitSource.volume = overlapSoundVolume;
             blockHitSource.Play();
-        }
-        else
-        {
-            /*blockHitSource.volume = hitVolumeAtStart;
-            blockHitSource.clip = wallHitSFX;
-            blockHitSource.Play();*/
         }
     }
 

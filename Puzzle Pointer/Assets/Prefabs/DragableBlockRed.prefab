@@ -49327,7 +49327,7 @@ MonoBehaviour:
   shakeTime: 0.15
   wallHitSource: {fileID: 9160054653183956916}
   blockHitSource: {fileID: 4491454111287223385}
-  overlapSoundVolume: 40
+  overlapSoundVolume: 0.2
   UpGrassParticle: {fileID: 3867737733873251471}
   DownGrassParticle: {fileID: 2476494317010104552}
   LeftGrassParticle: {fileID: 6662589967820197882}
