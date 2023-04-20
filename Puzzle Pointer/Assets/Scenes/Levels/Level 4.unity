@@ -2589,6 +2589,10 @@ PrefabInstance:
       propertyPath: connectedBlock
       value: 
       objectReference: {fileID: 2060138674}
+    - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: particleColor.rgba
+      value: 4278845695
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3511,6 +3515,18 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.6839622
       objectReference: {fileID: 0}
+    - target: {fileID: 6567651464860086229, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.b
+      value: 0.07744455
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567651464860086229, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567651464860086229, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7953044074265702755, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -3559,6 +3575,10 @@ PrefabInstance:
       propertyPath: connectedBlock
       value: 
       objectReference: {fileID: 91888057}
+    - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: particleColor.rgba
+      value: 4278255386
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

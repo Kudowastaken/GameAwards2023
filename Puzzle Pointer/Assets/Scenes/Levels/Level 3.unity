@@ -3604,7 +3604,7 @@ PrefabInstance:
       objectReference: {fileID: 2060138674}
     - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: particleColor.rgba
-      value: 4287138047
+      value: 4278190335
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

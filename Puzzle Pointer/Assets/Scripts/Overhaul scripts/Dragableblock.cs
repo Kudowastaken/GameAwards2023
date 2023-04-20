@@ -157,10 +157,12 @@ public class Dragableblock : MonoBehaviour
             ParticleStopper(DownGrassParticle, DownDustParticle);
             ParticleStopper(RightGrassParticle, RightDustParticle);
             ParticleStopper(LeftGrassParticle, LeftDustParticle);
-            myAudioSource.Stop();
-            wallHitSource.clip = wallHitSFX;
-            wallHitSource.Play();
- 
+            if(!blockHitSource.isPlaying && !wallHitSource.isPlaying)
+            {
+                myAudioSource.Stop();
+                wallHitSource.clip = wallHitSFX;
+                wallHitSource.Play();
+            }
             
             CameraShake.Instance.ShakeCamera(shakeIntensity, shakeTime);
             if (LevelHasBeenFinished)

@@ -567,7 +567,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press Left Click and Drag to Move the Boxes Towards the BUttons
+  m_text: Press Left Click and Drag to Move the Blocks Towards the BUttons
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd610d6d2ad7d75479df89569d7128e2, type: 2}
   m_sharedMaterial: {fileID: -6555219448694584018, guid: cd610d6d2ad7d75479df89569d7128e2, type: 2}
