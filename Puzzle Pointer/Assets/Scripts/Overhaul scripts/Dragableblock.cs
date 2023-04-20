@@ -12,6 +12,7 @@ public class Dragableblock : MonoBehaviour
     [SerializeField] private AudioClip moveSFX;
     [SerializeField] private AudioClip wallHitSFX;
     [SerializeField] private AudioMixerGroup wallMixerGroup;
+    [SerializeField] private AudioMixer wallMixer;
     [SerializeField] private AudioMixerGroup SFXMixer;
     [SerializeField] private SpriteRenderer eyesVisualRenderer;
     [SerializeField] private SpriteRenderer glowVisualRenderer;
@@ -20,6 +21,7 @@ public class Dragableblock : MonoBehaviour
     [SerializeField] private float shakeIntensity;
     [SerializeField] private float shakeTime;
     [SerializeField] private AudioSource wallHitSource;
+    [SerializeField] private AudioSource blockHitSource;
     [SerializeField] private float overlapSoundVolume;
     [Space(10)]
     [Header("Particles")]
@@ -73,7 +75,7 @@ public class Dragableblock : MonoBehaviour
         childColliderSizeAtStart = childBoxCollider.size;
         mySpriteMask.enabled = false;
         eyesVisualRenderer.sprite = whenOnButtonSprite;
-        hitVolumeAtStart = wallHitSource.volume;
+        hitVolumeAtStart = blockHitSource.volume;
     }
 
     private void Update()
@@ -98,6 +100,7 @@ public class Dragableblock : MonoBehaviour
             mySpriteMask.enabled = false;
             boxAnimator.SetBool("IsLevelComplete", false);
         }
+        blockHitSource.volume = overlapSoundVolume;
         StopMoving();
     }
 
@@ -137,7 +140,7 @@ public class Dragableblock : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("DragableBlock") || collision.transform.CompareTag("DragableCollider"))
+        if (collision.transform.CompareTag("Wall"))//|| collision.transform.CompareTag("DragableBlock") || collision.transform.CompareTag("DragableCollider"))
         {
             isMoving = false;
             mouseReleased = true;
@@ -155,18 +158,9 @@ public class Dragableblock : MonoBehaviour
             ParticleStopper(RightGrassParticle, RightDustParticle);
             ParticleStopper(LeftGrassParticle, LeftDustParticle);
             myAudioSource.Stop();
-            if (collision.transform.CompareTag("DragableBlock") || collision.transform.CompareTag("DragableCollider"))
-            {
-                wallHitSource.volume = overlapSoundVolume;
-                wallHitSource.clip = wallHitSFX;
-                wallHitSource.Play();
-            } 
-            else
-            {
-                wallHitSource.volume = hitVolumeAtStart;
-                wallHitSource.clip = wallHitSFX;
-                wallHitSource.Play();
-            }
+            wallHitSource.clip = wallHitSFX;
+            wallHitSource.Play();
+ 
             
             CameraShake.Instance.ShakeCamera(shakeIntensity, shakeTime);
             if (LevelHasBeenFinished)
@@ -189,6 +183,18 @@ public class Dragableblock : MonoBehaviour
             {
                 DownWallParticle.Play();
             }
+        }
+        if (collision.transform.CompareTag("DragableBlock") || collision.transform.CompareTag("DragableCollider"))
+        {
+            blockHitSource.clip = wallHitSFX;
+            blockHitSource.volume = overlapSoundVolume;
+            blockHitSource.Play();
+        }
+        else
+        {
+            /*blockHitSource.volume = hitVolumeAtStart;
+            blockHitSource.clip = wallHitSFX;
+            blockHitSource.Play();*/
         }
     }
 

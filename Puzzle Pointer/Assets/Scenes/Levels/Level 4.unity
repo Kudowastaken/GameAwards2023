@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6981375307350038292, guid: b9528ebe55f7b2346bcb385d57467204, type: 3}
+      propertyPath: overlapSoundVolume
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8435417607428792567, guid: b9528ebe55f7b2346bcb385d57467204, type: 3}
       propertyPath: m_Name
       value: DragableBlockGreen
@@ -2441,6 +2445,10 @@ PrefabInstance:
     - target: {fileID: 7614970076264261170, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
       propertyPath: m_Name
       value: DragableBlockRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962025497968234961, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
+      propertyPath: overlapSoundVolume
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
