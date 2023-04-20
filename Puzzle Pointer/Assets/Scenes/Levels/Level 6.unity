@@ -865,6 +865,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 920705191}
     - target: {fileID: 6991507455242932954, guid: 5dab0cc1adb49db45a4c2ae62aa5052c, type: 3}
+      propertyPath: challengeDisplay
+      value: 
+      objectReference: {fileID: 920705191}
+    - target: {fileID: 6991507455242932954, guid: 5dab0cc1adb49db45a4c2ae62aa5052c, type: 3}
       propertyPath: buttonScripts.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1432,11 +1436,13 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 5192483798931915708, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: m_text
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 7815285840203678415, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
       propertyPath: m_text
-      value: 'Level 6
-
-'
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -14,10 +14,13 @@ public class Dragableblock : MonoBehaviour
     [SerializeField] private AudioMixerGroup wallMixerGroup;
     [SerializeField] private AudioMixerGroup SFXMixer;
     [SerializeField] private SpriteRenderer eyesVisualRenderer;
+    [SerializeField] private SpriteRenderer glowVisualRenderer;
     [SerializeField] private Sprite startingSprite;
     [SerializeField] private Sprite whenOnButtonSprite;
     [SerializeField] private float shakeIntensity;
     [SerializeField] private float shakeTime;
+    [SerializeField] private AudioSource wallHitSource;
+    [SerializeField] private float overlapSoundVolume;
     [Space(10)]
     [Header("Particles")]
     [SerializeField] private ParticleSystem UpGrassParticle;
@@ -44,6 +47,7 @@ public class Dragableblock : MonoBehaviour
     private bool yMoreThan;
     private bool isMoving;
     private bool mouseReleased = true;
+    private float hitVolumeAtStart;
     private Vector2 direction;
     private Vector2 childColliderSizeAtStart;
     private Vector2 difference;
@@ -69,6 +73,7 @@ public class Dragableblock : MonoBehaviour
         childColliderSizeAtStart = childBoxCollider.size;
         mySpriteMask.enabled = false;
         eyesVisualRenderer.sprite = whenOnButtonSprite;
+        hitVolumeAtStart = wallHitSource.volume;
     }
 
     private void Update()
@@ -76,10 +81,12 @@ public class Dragableblock : MonoBehaviour
         if(BlockIsOnButton)
         {
             eyesVisualRenderer.sprite = whenOnButtonSprite;
+            glowVisualRenderer.enabled = true;
         }
         else
         {
             eyesVisualRenderer.sprite = startingSprite;
+            glowVisualRenderer.enabled = false;
         }
         if (LevelHasBeenFinished)
         {
@@ -114,8 +121,6 @@ public class Dragableblock : MonoBehaviour
         if (LevelHasBeenFinished) { return;}
         if (PauseMenu.isPaused) { return; }
 
-        myAudioSource.Stop();
-
         difference = (Vector2)Input.mousePosition - mouseStartPosition;
         xMoreThan = Mathf.Abs(difference.x) > Mathf.Abs(difference.y);
         yMoreThan = Mathf.Abs(difference.y) > Mathf.Abs(difference.x);
@@ -149,9 +154,20 @@ public class Dragableblock : MonoBehaviour
             ParticleStopper(DownGrassParticle, DownDustParticle);
             ParticleStopper(RightGrassParticle, RightDustParticle);
             ParticleStopper(LeftGrassParticle, LeftDustParticle);
-            myAudioSource.clip = wallHitSFX;
-            myAudioSource.outputAudioMixerGroup = wallMixerGroup;
-            myAudioSource.Play();
+            myAudioSource.Stop();
+            if (collision.transform.CompareTag("DragableBlock") || collision.transform.CompareTag("DragableCollider"))
+            {
+                wallHitSource.volume = overlapSoundVolume;
+                wallHitSource.clip = wallHitSFX;
+                wallHitSource.Play();
+            } 
+            else
+            {
+                wallHitSource.volume = hitVolumeAtStart;
+                wallHitSource.clip = wallHitSFX;
+                wallHitSource.Play();
+            }
+            
             CameraShake.Instance.ShakeCamera(shakeIntensity, shakeTime);
             if (LevelHasBeenFinished)
             {

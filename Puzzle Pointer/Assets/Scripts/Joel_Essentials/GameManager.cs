@@ -1,20 +1,26 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
+// ReSharper disable InconsistentNaming
 public class GameManager : MonoBehaviour
 {
     private Button nextLevelButton;
     private Button restartLevelButton;
     private Image nextLevelImage;
     private Button mainMenuGameButton;
+    private AudioSource myAudioSource;
     [SerializeField] private TMP_Text moveDisplay;
-    [SerializeField] private TMP_Text challangeDisplay;
+    [SerializeField] private TMP_Text challengeDisplay;
     [SerializeField] private ButtonScript[] buttonScripts;
     [SerializeField] private float textUpdateInterval;
+    [SerializeField] private AudioClip winSFX;
+    [SerializeField] private AudioMixerGroup SFXMixer;
 
-    public static bool currentLevelHasBeenFinished = false;
+    private static bool currentLevelHasBeenFinished = false;
     private bool isLoadingNextScene = false;
+    private bool hasPlayedWinSound;
 
     private void Start()
     {
@@ -27,17 +33,19 @@ public class GameManager : MonoBehaviour
         restartLevelButton = GameObject.FindGameObjectWithTag("RestartLevelButton").GetComponent<Button>();
         restartLevelButton.onClick.AddListener(ReloadScene);
         isLoadingNextScene = false;
+        myAudioSource = GetComponent<AudioSource>();
+        hasPlayedWinSound = false;
     }
 
     private void Update()
     {
         if (!currentLevelHasBeenFinished)
         {
-            challangeDisplay.enabled = false;
+            challengeDisplay.enabled = false;
         }
         else
         {
-            challangeDisplay.enabled = true;
+            challengeDisplay.enabled = true;
         }
         GameIsPaused();
         UpdateMovesText();
@@ -62,7 +70,7 @@ public class GameManager : MonoBehaviour
     {
         if (Time.frameCount % textUpdateInterval == 0f)
         {
-            moveDisplay.text = Dragableblock.BlockMoves >= 999f ? $"Moves: 999" : $"Moves: {Dragableblock.BlockMoves}";
+            moveDisplay.text = Dragableblock.BlockMoves >= 999f ? $"999" : $"{Dragableblock.BlockMoves}";
         }
     }
 
@@ -84,7 +92,15 @@ public class GameManager : MonoBehaviour
         nextLevelButton.enabled = true;
         nextLevelImage.enabled = true;
         currentLevelHasBeenFinished = true;
-        challangeDisplay.enabled = true;
+        challengeDisplay.enabled = true;
+        if (!hasPlayedWinSound)
+        {
+            myAudioSource.clip = winSFX;
+            myAudioSource.outputAudioMixerGroup = SFXMixer;
+            myAudioSource.Play();
+            hasPlayedWinSound = true;
+        }
+
         foreach (var dragableBlock in FindObjectsOfType<Dragableblock>())
         {
             dragableBlock.LevelHasBeenFinished = true;
@@ -105,10 +121,5 @@ public class GameManager : MonoBehaviour
     public void ReloadScene()
     {
         SceneManagerExtended.ReloadScene();
-    }
-
-    public void MainMenu()
-    {
-
     }
 }

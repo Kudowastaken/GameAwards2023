@@ -928,6 +928,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 809761243}
     - target: {fileID: 6991507455242932954, guid: 5dab0cc1adb49db45a4c2ae62aa5052c, type: 3}
+      propertyPath: challengeDisplay
+      value: 
+      objectReference: {fileID: 809761243}
+    - target: {fileID: 6991507455242932954, guid: 5dab0cc1adb49db45a4c2ae62aa5052c, type: 3}
       propertyPath: buttonScripts.Array.size
       value: 3
       objectReference: {fileID: 0}

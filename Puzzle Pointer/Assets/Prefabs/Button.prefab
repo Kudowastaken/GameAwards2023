@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonSprite: {fileID: 21300000, guid: ba5310c81e79a09458a7bb25dca98617, type: 3}
-  pressSFX: {fileID: 8300000, guid: 31e352ff2ae31824fa56974e132f3609, type: 3}
+  pressSFX: {fileID: 8300000, guid: 90abf805b6a7ef44abdbf7e55718f95f, type: 3}
   connectedBlock: {fileID: 0}
   isPressed: 0
   particleColor:
