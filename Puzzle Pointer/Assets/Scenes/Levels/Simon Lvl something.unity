@@ -184,6 +184,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9528ebe55f7b2346bcb385d57467204, type: 3}
+--- !u!4 &4011849 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6123512515466531928, guid: b9528ebe55f7b2346bcb385d57467204, type: 3}
+  m_PrefabInstance: {fileID: 4011848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5205884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3517,6 +3522,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
+--- !u!4 &1441273315 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5207928493020615325, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
+  m_PrefabInstance: {fileID: 1441273314}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1454893086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4591,6 +4601,134 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+--- !u!4 &1990013198 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7953044074265702755, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+  m_PrefabInstance: {fileID: 1990013197}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2038168370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2038168372}
+  - component: {fileID: 2038168371}
+  m_Layer: 0
+  m_Name: Joel Test Obj (TEMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2038168371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038168370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b6e5b12e12cc24fb0fb834123b7c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectedTransforms:
+  - {fileID: 1663802414}
+  - {fileID: 349400479}
+  - {fileID: 1075190875}
+  - {fileID: 1381411815}
+  - {fileID: 2086601892}
+  - {fileID: 541706258}
+  - {fileID: 997140707}
+  - {fileID: 1334698389}
+  - {fileID: 71978919}
+  - {fileID: 1150610183}
+  - {fileID: 156634322}
+  - {fileID: 813668325}
+  - {fileID: 1222333312}
+  - {fileID: 1069903549}
+  - {fileID: 769800269}
+  - {fileID: 829907174}
+  - {fileID: 533161249}
+  - {fileID: 332138091}
+  - {fileID: 1441273315}
+  - {fileID: 1990013198}
+  - {fileID: 4011849}
+  - {fileID: 1322449744}
+  - {fileID: 85839614}
+  - {fileID: 1348832835}
+  - {fileID: 1489667886}
+  - {fileID: 638427441}
+  - {fileID: 1335056325}
+  - {fileID: 1170845124}
+  - {fileID: 1730360152}
+  - {fileID: 1454893087}
+  - {fileID: 751092381}
+  - {fileID: 1788414507}
+  - {fileID: 12991612}
+  - {fileID: 951604781}
+  - {fileID: 313169452}
+  - {fileID: 338674523}
+  - {fileID: 1465770876}
+  - {fileID: 1667840553}
+  - {fileID: 270717985}
+  - {fileID: 531333954}
+  - {fileID: 1290739196}
+  - {fileID: 656053337}
+  - {fileID: 143717079}
+  - {fileID: 1649817640}
+  - {fileID: 1338280788}
+  - {fileID: 372716127}
+  - {fileID: 1035657938}
+  - {fileID: 936594826}
+  - {fileID: 1604374859}
+  startPositionRadius: 5
+  startPositionHeightIncrease: 50
+  startPositionXAxis: -5
+  minDuration: 0.8
+  maxDuration: 1.2
+  movementCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.4725963
+      outSlope: 0.4725963
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0
+      outWeight: 0.11715571
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.14752938
+      outSlope: -0.008503691
+      tangentMode: 1
+      weightedMode: 3
+      inWeight: 1
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &2038168372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038168370}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2060138674 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8962025497968234961, guid: 92ebb9ae022d7664eb549f928bf7ad8c, type: 3}
