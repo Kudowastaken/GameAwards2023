@@ -43,7 +43,7 @@ public class LevelStartEffect : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex > 2)
         {
-            const float buildDelay = 2.58f;
+            const float buildDelay = 2.5f;
             yield return new WaitForSeconds(buildDelay);
         }
 
