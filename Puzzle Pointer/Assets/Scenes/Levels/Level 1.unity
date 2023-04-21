@@ -1228,11 +1228,11 @@ MonoBehaviour:
   - {fileID: 399949861}
   - {fileID: 929954873}
   - {fileID: 874615722}
-  startPositionRadius: 1
+  startPositionRadius: 5
   startPositionHeightIncrease: 50
-  startPositionXAxis: -3
-  minDuration: 0.5
-  maxDuration: 1
+  startPositionXAxis: -5
+  minDuration: 0.8
+  maxDuration: 1.2
   movementCurve:
     serializedVersion: 2
     m_Curve:
@@ -1248,7 +1248,7 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: -0.041535955
+      inSlope: -0.14752938
       outSlope: -0.008503691
       tangentMode: 1
       weightedMode: 3
