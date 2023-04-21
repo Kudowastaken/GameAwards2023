@@ -21,6 +21,7 @@ public class AnimationEvents : MonoBehaviour
     [SerializeField] private AudioSource closingImpactSource;
     [SerializeField] private AudioSource closingRumblingSource;
 
+
     private void Awake()
     {
         myAnimator = GetComponent<Animator>();
