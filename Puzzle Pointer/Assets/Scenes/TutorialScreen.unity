@@ -505,7 +505,7 @@ PrefabInstance:
     - {fileID: 3876958474919662265, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 416138247479652311, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
-      insertIndex: 3
+      insertIndex: 4
       addedObject: {fileID: 979453803}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
