@@ -2725,7 +2725,7 @@ PrefabInstance:
       objectReference: {fileID: 2060138674}
     - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: particleColor.rgba
-      value: 4278845695
+      value: 4288712703
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3719,10 +3719,6 @@ PrefabInstance:
       propertyPath: connectedBlock
       value: 
       objectReference: {fileID: 91888057}
-    - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
-      propertyPath: particleColor.rgba
-      value: 4278255386
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
