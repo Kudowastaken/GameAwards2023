@@ -1153,6 +1153,18 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 5192483798931915708, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: m_text
+      value: '13
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815285840203678415, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: m_text
+      value: '8
+
+'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

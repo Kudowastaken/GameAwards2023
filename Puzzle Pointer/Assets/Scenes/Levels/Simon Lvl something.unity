@@ -2193,7 +2193,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -10
-  m_Sprite: {fileID: 21300000, guid: c0e007c1a7c272f45a405517a4f9ba7e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 996f9792ce7a6dd43bf9700b61398aff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4493,6 +4493,18 @@ PrefabInstance:
       propertyPath: m_text
       value: 'Best: 22'
       objectReference: {fileID: 0}
+    - target: {fileID: 5192483798931915708, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: m_text
+      value: '22
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815285840203678415, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: m_text
+      value: '9
+
+'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4588,6 +4600,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
+      propertyPath: buttonSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0e084d8b5682bfb459088aec89718213, type: 3}
     - target: {fileID: 7982363918160613712, guid: 1abfc86c71da64d43afabeff38a553fd, type: 3}
       propertyPath: connectedBlock
       value: 

@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -49,7 +50,7 @@ public class Dragableblock : MonoBehaviour
     private bool yMoreThan;
     private bool isMoving;
     private bool mouseReleased = true;
-    private float hitVolumeAtStart;
+    private float collisionTimer = 0f;
     private Vector2 direction;
     private Vector2 childColliderSizeAtStart;
     private Vector2 difference;
@@ -75,11 +76,16 @@ public class Dragableblock : MonoBehaviour
         childColliderSizeAtStart = childBoxCollider.size;
         mySpriteMask.enabled = false;
         eyesVisualRenderer.sprite = whenOnButtonSprite;
-        hitVolumeAtStart = blockHitSource.volume;
     }
 
     private void Update()
     {
+        //Timers
+        if (collisionTimer > 0)
+        {
+            collisionTimer -= Time.deltaTime;
+        }
+        
         if(BlockIsOnButton)
         {
             eyesVisualRenderer.sprite = whenOnButtonSprite;
@@ -127,10 +133,11 @@ public class Dragableblock : MonoBehaviour
         difference = (Vector2)Input.mousePosition - mouseStartPosition;
         xMoreThan = Mathf.Abs(difference.x) > Mathf.Abs(difference.y);
         yMoreThan = Mathf.Abs(difference.y) > Mathf.Abs(difference.x);
-
+        
         if(xMoreThan && Mathf.Abs(difference.x) < dragThreshold){return;}
         if(yMoreThan && Mathf.Abs(difference.y) < dragThreshold){return;}
         myAudioSource.outputAudioMixerGroup = SFXMixer;
+        
         if ( xMoreThan && difference.x > 0) {direction = new Vector2(1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingHorizontally", true); ParticlePlayer(RightGrassParticle, RightDustParticle); }
         else if(xMoreThan && difference.x < 0) {direction = new Vector2(-1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingHorizontally", true); ParticlePlayer(LeftGrassParticle, LeftDustParticle);  }
         else if(yMoreThan && difference.y > 0) {direction = new Vector2(0, 1);isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingVertically", true); ParticlePlayer(UpGrassParticle, UpDustParticle);  }
@@ -157,9 +164,11 @@ public class Dragableblock : MonoBehaviour
             ParticleStopper(DownGrassParticle, DownDustParticle);
             ParticleStopper(RightGrassParticle, RightDustParticle);
             ParticleStopper(LeftGrassParticle, LeftDustParticle);
-            if(!blockHitSource.isPlaying && !wallHitSource.isPlaying)
+            myAudioSource.Stop();
+            if(!blockHitSource.isPlaying && collisionTimer <= 0)
             {
-                myAudioSource.Stop();
+                const float collisionDelay = 0.2f;
+                collisionTimer = collisionDelay;
                 wallHitSource.clip = wallHitSFX;
                 wallHitSource.Play();
             }
