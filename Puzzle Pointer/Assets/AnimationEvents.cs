@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 public class AnimationEvents : MonoBehaviour
 {
     public static bool hasWatchedTutorial = false;
+    public bool hasLoadedScene { get; set; }
     private Animator myAnimator;
     private static readonly int Opening = Animator.StringToHash("Opening");
     private static readonly int Closing = Animator.StringToHash("Closing");
@@ -26,6 +28,7 @@ public class AnimationEvents : MonoBehaviour
 
     public void NextScene()
     {
+        hasLoadedScene = true;
         if (hasWatchedTutorial)
         {
             SceneManagerExtended.LoadScene(2);

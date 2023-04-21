@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Dumt namn men tidspress
 public class LevelStartEffect : MonoBehaviour
@@ -13,9 +14,13 @@ public class LevelStartEffect : MonoBehaviour
 
     [SerializeField] float minDuration, maxDuration;
     [SerializeField] AnimationCurve movementCurve;
+
+    AnimationEvents animationEvents;
     
     void Start()
     {
+        animationEvents = FindObjectOfType<AnimationEvents>();
+
         for (int i = 0; i < affectedTransforms.Length; i++)
         {
             StartCoroutine(MoveObjectToPosition(affectedTransforms[i], Random.Range(minDuration, maxDuration)));
@@ -36,6 +41,12 @@ public class LevelStartEffect : MonoBehaviour
 
         objTransform.position = startPosition;
 
+        if (SceneManager.GetActiveScene().buildIndex > 2)
+        {
+            const float buildDelay = 2.58f;
+            yield return new WaitForSeconds(buildDelay);
+        }
+
         float t = 0f;
         while (t < 1f)
         {
@@ -51,6 +62,7 @@ public class LevelStartEffect : MonoBehaviour
         {
             objCollider.enabled = true;
         }
+        animationEvents.hasLoadedScene = false;
     }
 
     private void OnDrawGizmosSelected()
