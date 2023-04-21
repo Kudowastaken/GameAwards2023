@@ -8,7 +8,7 @@ public class ScreenFadeAnimationEvent : MonoBehaviour
 {
     private Animator myAnimator;
 
-    bool canReload;
+    [SerializeField] public bool canReload;
     private static bool goNextLevel;
     private static int currentSceneIndex = 0;
 
@@ -35,9 +35,11 @@ public class ScreenFadeAnimationEvent : MonoBehaviour
             if(goNextLevel)
             {
                 FindObjectOfType<AnimationEvents>().playOpeningNoTransAnim();
-            }else if(!goNextLevel) 
+            }
+            else if(!goNextLevel) 
             {
                 ScreenFadeIn();
+                canReload = true;
             }
         }
     }
@@ -45,7 +47,6 @@ public class ScreenFadeAnimationEvent : MonoBehaviour
     // called third
     void Start()
     {
-
     }
 
     // called when the game or scene closes

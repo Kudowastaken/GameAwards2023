@@ -15,11 +15,11 @@ public class LevelStartEffect : MonoBehaviour
     [SerializeField] float minDuration, maxDuration;
     [SerializeField] AnimationCurve movementCurve;
 
-    AnimationEvents animationEvents;
-    
+
+    ScreenFadeAnimationEvent screenFadeAnimationEvent;    
     void Start()
     {
-        animationEvents = FindObjectOfType<AnimationEvents>();
+        screenFadeAnimationEvent = FindObjectOfType<ScreenFadeAnimationEvent>();
 
         for (int i = 0; i < affectedTransforms.Length; i++)
         {
@@ -41,7 +41,7 @@ public class LevelStartEffect : MonoBehaviour
 
         objTransform.position = startPosition;
 
-        if (SceneManager.GetActiveScene().buildIndex > 2)
+        if (SceneManager.GetActiveScene().buildIndex > 2 && !screenFadeAnimationEvent.canReload)
         {
             const float buildDelay = 2.1f;
             yield return new WaitForSeconds(buildDelay);
@@ -62,7 +62,6 @@ public class LevelStartEffect : MonoBehaviour
         {
             objCollider.enabled = true;
         }
-        animationEvents.hasLoadedScene = false;
     }
 
     private void OnDrawGizmosSelected()
