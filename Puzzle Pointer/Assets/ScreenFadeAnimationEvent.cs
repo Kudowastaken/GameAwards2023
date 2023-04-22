@@ -17,11 +17,6 @@ public class ScreenFadeAnimationEvent : MonoBehaviour
         myAnimator = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        Debug.Log(canReload);
-    }
-
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded; // This tells the script to call the function "OnSceneLoaded" when the scene manager detects the scene has finished loading with the parameters of the scene object and the mode of how the scene was loaded

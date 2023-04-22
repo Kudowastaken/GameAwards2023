@@ -382,6 +382,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas stuff
       objectReference: {fileID: 0}
+    - target: {fileID: 5403977468816696392, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: bb6bc9c589abec645a0ffe2f47e5d4cb, type: 2}
+    - target: {fileID: 6264964657738112010, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: bb6bc9c589abec645a0ffe2f47e5d4cb, type: 2}
+    - target: {fileID: 7282635770622355857, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: bb6bc9c589abec645a0ffe2f47e5d4cb, type: 2}
+    - target: {fileID: 8610494880228854710, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: bb6bc9c589abec645a0ffe2f47e5d4cb, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3391842448123605639, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
@@ -5583,14 +5599,6 @@ PrefabInstance:
     - target: {fileID: 6516793638137153540, guid: def6c51c770a34e4c85d89522f656d2c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7025875969757829036, guid: def6c51c770a34e4c85d89522f656d2c, type: 3}
-      propertyPath: m_Pitch
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7044032538690206746, guid: def6c51c770a34e4c85d89522f656d2c, type: 3}
-      propertyPath: m_Pitch
-      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7140099829777340974, guid: def6c51c770a34e4c85d89522f656d2c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
