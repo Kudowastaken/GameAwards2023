@@ -1226,7 +1226,6 @@ MonoBehaviour:
   startPositionRadius: 5
   startPositionHeightIncrease: 50
   startPositionXAxis: -5
-  buildDelay: 2
   minDuration: 0.8
   maxDuration: 1.2
   movementCurve:
