@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: 5e5529444727ab741b745d2cfb89bd0f, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.06575394, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.052033424, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 2739821150003809141}
   - component: {fileID: 2988849253487102697}
   m_Layer: 0
-  m_Name: Button
+  m_Name: Button Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

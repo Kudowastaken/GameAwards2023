@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using Unity.Collections;
 using UnityEngine;
+using UnityEngine.AdaptivePerformance;
 using UnityEngine.Audio;
 // ReSharper disable InconsistentNaming
 public class Dragableblock : MonoBehaviour
@@ -24,6 +25,7 @@ public class Dragableblock : MonoBehaviour
     [SerializeField] private AudioSource wallHitSource;
     [SerializeField] private AudioSource blockHitSource;
     [SerializeField] private float overlapSoundVolume;
+    [SerializeField] private SpriteRenderer onMouseHoverSpriteRenderer;
     [Space(10)]
     [Header("Particles")]
     [SerializeField] private ParticleSystem UpGrassParticle;
@@ -50,7 +52,8 @@ public class Dragableblock : MonoBehaviour
     private bool yMoreThan;
     private bool isMoving;
     private bool mouseReleased = true;
-    private float collisionTimer = 0f;
+    private bool mouseHover;
+    private float collisionTimer;
     private Vector2 direction;
     private Vector2 childColliderSizeAtStart;
     private Vector2 difference;
@@ -85,17 +88,23 @@ public class Dragableblock : MonoBehaviour
         {
             collisionTimer -= Time.deltaTime;
         }
+
+        eyesVisualRenderer.sprite = BlockIsOnButton ? whenOnButtonSprite : startingSprite;
+        glowVisualRenderer.enabled = BlockIsOnButton;
+        if (!LevelHasBeenFinished)
+        {
+            onMouseHoverSpriteRenderer.enabled = mouseHover && !isMoving;
+        }
         
-        if(BlockIsOnButton)
+        if (mouseHover && BlockIsOnButton)
         {
-            eyesVisualRenderer.sprite = whenOnButtonSprite;
-            glowVisualRenderer.enabled = true;
-        }
-        else
-        {
-            eyesVisualRenderer.sprite = startingSprite;
+            if (LevelHasBeenFinished) { return;}
             glowVisualRenderer.enabled = false;
+            onMouseHoverSpriteRenderer.enabled = true;
         }
+        
+        
+
         if (LevelHasBeenFinished)
         {
             mySpriteMask.enabled = true;
@@ -108,6 +117,16 @@ public class Dragableblock : MonoBehaviour
         }
         blockHitSource.volume = overlapSoundVolume;
         StopMoving();
+    }
+
+    private void OnMouseEnter()
+    {
+        mouseHover = true;
+    }
+
+    private void OnMouseExit()
+    {
+        mouseHover = false;
     }
 
     private void OnMouseDown()
@@ -195,8 +214,10 @@ public class Dragableblock : MonoBehaviour
                 DownWallParticle.Play();
             }
         }
-        if (collision.transform.CompareTag("DragableBlock") || collision.transform.CompareTag("DragableCollider"))
+        if (collision.transform.CompareTag("DragableBlock") && collisionTimer <= 0 || collision.transform.CompareTag("DragableCollider") && collisionTimer <= 0)
         {
+            const float collisionDelay = 0.2f;
+            collisionTimer = collisionDelay;
             blockHitSource.outputAudioMixerGroup = wallMixerGroup;
             blockHitSource.clip = wallHitSFX;
             blockHitSource.volume = overlapSoundVolume;
