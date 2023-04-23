@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Threading;
 using Unity.Collections;
 using UnityEngine;
@@ -10,9 +11,11 @@ public class Dragableblock : MonoBehaviour
     [SerializeField] private BoxCollider2D childBoxCollider;
     [SerializeField] private float dragThreshold;
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float portalResetDelay;
     [SerializeField] private float blockMovesUpdateInterval;
     [SerializeField] private AudioClip moveSFX;
     [SerializeField] private AudioClip wallHitSFX;
+    [SerializeField] private AudioClip portalSFX;
     [SerializeField] private AudioMixerGroup wallMixerGroup;
     [SerializeField] private AudioMixer wallMixer;
     [SerializeField] private AudioMixerGroup SFXMixer;
@@ -24,6 +27,7 @@ public class Dragableblock : MonoBehaviour
     [SerializeField] private float shakeTime;
     [SerializeField] private AudioSource wallHitSource;
     [SerializeField] private AudioSource blockHitSource;
+    [SerializeField] private AudioSource portalAudioSource;
     [SerializeField] private float overlapSoundVolume;
     [SerializeField] private SpriteRenderer onMouseHoverSpriteRenderer;
     [Space(10)]
@@ -50,15 +54,20 @@ public class Dragableblock : MonoBehaviour
     
     private bool xMoreThan;
     private bool yMoreThan;
-    private bool isMoving;
+    [SerializeField]private bool isMoving;
     private bool mouseReleased = true;
     private bool mouseHover;
+    private bool isUsingPortal;
+    private bool portalGotSentBack;
     private float collisionTimer;
+    private float insidePortalTimer;
     private Vector2 direction;
     private Vector2 childColliderSizeAtStart;
     private Vector2 difference;
     private Vector2 mouseStartPosition = Vector2.zero;
     private ParticleSystem currentParticleSystem;
+    private PortalScript currentPortalScript;
+    private PortalScript lastPortalUsed;
 
     private static Dragableblock movingBlock;
     public static float BlockMoves { get; set; }
@@ -87,6 +96,10 @@ public class Dragableblock : MonoBehaviour
         if (collisionTimer > 0)
         {
             collisionTimer -= Time.deltaTime;
+        }
+        if (insidePortalTimer > 0)
+        {
+            insidePortalTimer -= Time.deltaTime;
         }
 
         eyesVisualRenderer.sprite = BlockIsOnButton ? whenOnButtonSprite : startingSprite;
@@ -148,6 +161,8 @@ public class Dragableblock : MonoBehaviour
         if (movingBlock != null) { return; }
         if (LevelHasBeenFinished) { return;}
         if (PauseMenu.isPaused) { return; }
+        if (portalGotSentBack) { return; }
+        if (isUsingPortal) { return;}
 
         difference = (Vector2)Input.mousePosition - mouseStartPosition;
         xMoreThan = Mathf.Abs(difference.x) > Mathf.Abs(difference.y);
@@ -158,16 +173,123 @@ public class Dragableblock : MonoBehaviour
         myAudioSource.outputAudioMixerGroup = SFXMixer;
         
         if ( xMoreThan && difference.x > 0) {direction = new Vector2(1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingHorizontally", true); ParticlePlayer(RightGrassParticle, RightDustParticle); }
-        else if(xMoreThan && difference.x < 0) {direction = new Vector2(-1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingHorizontally", true); ParticlePlayer(LeftGrassParticle, LeftDustParticle);  }
-        else if(yMoreThan && difference.y > 0) {direction = new Vector2(0, 1);isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingVertically", true); ParticlePlayer(UpGrassParticle, UpDustParticle);  }
-        else if (yMoreThan && difference.y < 0) { direction = new Vector2(0, -1); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingVertically", true); ParticlePlayer(DownGrassParticle, DownDustParticle);  }
-        else return;
+        else if(xMoreThan && difference.x < 0) {direction = new Vector2(-1, 0); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(1f, 0.5f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x, childColliderSizeAtStart.y / 2); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingHorizontally", true); ParticlePlayer(LeftGrassParticle, LeftDustParticle);}
+        else if(yMoreThan && difference.y > 0) {direction = new Vector2(0, 1);isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingVertically", true); ParticlePlayer(UpGrassParticle, UpDustParticle);}
+        else if (yMoreThan && difference.y < 0) { direction = new Vector2(0, -1); isMoving = true; myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation; myBoxCollider.size = new Vector2(0.5f, 1f); childBoxCollider.size = new Vector2(childColliderSizeAtStart.x / 2f, childColliderSizeAtStart.y); myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse); movingBlock = this; myAudioSource.clip = moveSFX; myAudioSource.Play(); Invoke(nameof(AddToBlockMovesCount), blockMovesUpdateInterval); boxAnimator.SetBool("IsMovingVertically", true); ParticlePlayer(DownGrassParticle, DownDustParticle);}
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.transform.CompareTag("Portal")) return;
+        if (portalGotSentBack) { return; }
+
+        currentPortalScript = other.transform.GetComponent<PortalScript>();
+        
+        if (lastPortalUsed != null)
+        {
+            if (currentPortalScript.connectedPortal == lastPortalUsed) { return; }
+        }
+        
+        lastPortalUsed = currentPortalScript;
+        isUsingPortal = true;
+        StartCoroutine(BlockUsedPortalRoutine());
+        //transform.position = currentPortalScript.connectedPortal.transform.position;
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        /*
+        if (!other.transform.CompareTag("Portal")) { return; }
+
+        var leftPortal = other.transform.GetComponent<PortalScript>();
+        
+        if (currentPortalScript != null)
+        {
+            if (leftPortal == currentPortalScript.connectedPortal)
+            {
+                StartCoroutine(BlockLeftPortal());
+                //myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse);
+            }
+        }*/
+    }
+
+    private void UsingPortalFalse()
+    {
+        isUsingPortal = false;
+    }
+
+    private IEnumerator BlockUsedPortalRoutine()
+    {
+        myRigidBody.velocity = Vector2.zero;
+        myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+        boxAnimator.SetBool("IsMovingHorizontally", false);
+        boxAnimator.SetBool("IsMovingVertically", false);
+        ParticleStopper(UpGrassParticle, UpDustParticle);
+        ParticleStopper(DownGrassParticle, DownDustParticle);
+        ParticleStopper(RightGrassParticle, RightDustParticle);
+        ParticleStopper(LeftGrassParticle, LeftDustParticle);
+        myAudioSource.Stop();
+        transform.position = currentPortalScript.transform.position;
+        boxAnimator.SetBool("BoxShrink", true);
+
+        portalAudioSource.clip = portalSFX;
+        portalAudioSource.Play();
+
+        yield return new WaitForSeconds(0.4f);
+        
+        boxAnimator.SetBool("BoxShrink", false);
+        transform.position = currentPortalScript.connectedPortal.transform.position;
+        StartCoroutine(BlockLeftPortalRoutine());
+    }
+
+    private IEnumerator BlockLeftPortalRoutine()
+    {
+        boxAnimator.SetBool("BoxGrow",true);
+
+        yield return new WaitForSeconds(0.4f);
+        
+        boxAnimator.SetBool("BoxGrow",false);
+        myRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        myRigidBody.AddForce(direction * moveSpeed, ForceMode2D.Impulse);
+        if (direction == new Vector2(1, 0))
+        {
+            boxAnimator.SetBool("IsMovingHorizontally", true);
+            ParticlePlayer(RightGrassParticle, RightDustParticle);
+            myAudioSource.clip = moveSFX;
+            myAudioSource.Play();
+        }else if (direction == new Vector2(-1, 0))
+        {
+            boxAnimator.SetBool("IsMovingHorizontally", true);
+            ParticlePlayer(LeftGrassParticle, LeftDustParticle);
+            myAudioSource.clip = moveSFX;
+            myAudioSource.Play();
+        }else if (direction == new Vector2(0, 1))
+        {
+            boxAnimator.SetBool("IsMovingVertically", true);
+            ParticlePlayer(UpGrassParticle, UpDustParticle);
+            myAudioSource.clip = moveSFX;
+            myAudioSource.Play();
+        }else if (direction == new Vector2(0, -1))
+        {
+            boxAnimator.SetBool("IsMovingVertically", true);
+            ParticlePlayer(DownGrassParticle, DownDustParticle);
+            myAudioSource.clip = moveSFX;
+            myAudioSource.Play();
+        }
+        Invoke(nameof(UsingPortalFalse), portalResetDelay);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.CompareTag("Wall"))//|| collision.transform.CompareTag("DragableBlock") || collision.transform.CompareTag("DragableCollider"))
         {
+            if (isUsingPortal) { return;}
+
+            currentPortalScript = null;
+            lastPortalUsed = null;
+            
+            Debug.Log("Collided with a wall");
+            
             isMoving = false;
             mouseReleased = true;
             movingBlock = null;
@@ -214,8 +336,16 @@ public class Dragableblock : MonoBehaviour
                 DownWallParticle.Play();
             }
         }
-        if (collision.transform.CompareTag("DragableBlock") && collisionTimer <= 0 || collision.transform.CompareTag("DragableCollider") && collisionTimer <= 0)
+        if (collision.transform.CompareTag("DragableBlock") && collisionTimer <= 0 && !isUsingPortal || collision.transform.CompareTag("DragableCollider") && collisionTimer <= 0 && !isUsingPortal)
         {
+            if (isUsingPortal) { return;}
+            
+            currentPortalScript = null;
+            lastPortalUsed = null;
+            
+            Debug.Log("Collided with a block");
+            
+            myAudioSource.Stop();
             const float collisionDelay = 0.2f;
             collisionTimer = collisionDelay;
             blockHitSource.outputAudioMixerGroup = wallMixerGroup;
@@ -228,12 +358,14 @@ public class Dragableblock : MonoBehaviour
     private void StopMoving()
     {
         if (!isMoving) { return;}
+        if (isUsingPortal) { return;}
         
         if (myRigidBody.velocity == new Vector2(0, 0) || Mathf.Abs(myRigidBody.velocity.x) < 0.1f && myRigidBody.velocity.y == 0f || Mathf.Abs(myRigidBody.velocity.y) < 0.1f && myRigidBody.velocity.x == 0f)
         {
+            Debug.Log("Stop moving got called");
             isMoving = false;
             mouseReleased = true;
-            movingBlock = null;
+            movingBlock = null; 
             mouseStartPosition = Vector2.zero;
             direction = Vector2.zero;
             myRigidBody.velocity = Vector2.zero;
