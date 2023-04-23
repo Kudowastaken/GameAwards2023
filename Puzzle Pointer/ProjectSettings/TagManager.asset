@@ -14,6 +14,7 @@ TagManager:
   - RestartLevelButton
   - PauseMenu
   - MainMenuButton
+  - Portal
   layers:
   - Default
   - TransparentFX
@@ -24,8 +25,8 @@ TagManager:
   - Ground
   - Block
   - Wall
-  - 
-  - 
+  - PortalChecker
+  - Portal
   - 
   - 
   - 
