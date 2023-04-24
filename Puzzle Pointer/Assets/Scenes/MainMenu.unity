@@ -5126,7 +5126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea4069c1115be84cb340ba1a70a7c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMusic: {fileID: 8300000, guid: 1157f384a83d5e74ba239800706fc4a3, type: 3}
+  defaultMusic: {fileID: 8300000, guid: 24fefc81a622dda44b4d4bea66601963, type: 3}
   musicFadeDuration: 3
   musicVolume: 1
   musicMixer: {fileID: 24300002, guid: 32e3f976a7a2d7a48ab89504885362cb, type: 2}
