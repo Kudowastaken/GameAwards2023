@@ -25,7 +25,12 @@ public class ScreenFadeAnimationEvent : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.buildIndex >= 2)
+        if (scene.buildIndex == 2)
+        {
+            ScreenFadeIn();
+        }
+
+        if (scene.buildIndex > 2)
         {
             if(goNextLevel)
             {
