@@ -44575,6 +44575,134 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &6681227589467874303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356298187840969439}
+  - component: {fileID: 5474052699493053751}
+  m_Layer: 0
+  m_Name: PortalAudioSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356298187840969439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6681227589467874303}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5207928493020615325}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &5474052699493053751
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6681227589467874303}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: bb6bc9c589abec645a0ffe2f47e5d4cb, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0
+  m_Pitch: 1.52
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6929188071206868639
 GameObject:
   m_ObjectHideFlags: 0
@@ -49458,6 +49586,7 @@ Transform:
   - {fileID: 7048277340826541741}
   - {fileID: 1986223795096246674}
   - {fileID: 3472269795447891827}
+  - {fileID: 6356298187840969439}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49480,6 +49609,7 @@ MonoBehaviour:
   blockMovesUpdateInterval: 0.03
   moveSFX: {fileID: 8300000, guid: f0ad7bab30ff65a4aace081819857d1f, type: 3}
   wallHitSFX: {fileID: 8300000, guid: 5e04a47fc615e2f49b9809f13383a192, type: 3}
+  portalSFX: {fileID: 8300000, guid: e1ae5cd8f3148e4458f38255ebfd8041, type: 3}
   wallMixerGroup: {fileID: 24300002, guid: 00afe7781e7ea0a4fbb7d3aef391fcdd, type: 2}
   wallMixer: {fileID: 24100000, guid: 00afe7781e7ea0a4fbb7d3aef391fcdd, type: 2}
   SFXMixer: {fileID: 24300002, guid: bb6bc9c589abec645a0ffe2f47e5d4cb, type: 2}
@@ -49491,6 +49621,7 @@ MonoBehaviour:
   shakeTime: 0.25
   wallHitSource: {fileID: 9160054653183956916}
   blockHitSource: {fileID: 4491454111287223385}
+  portalAudioSource: {fileID: 5474052699493053751}
   overlapSoundVolume: 0.2
   onMouseHoverSpriteRenderer: {fileID: 5575038375918849090}
   UpGrassParticle: {fileID: 3867737733873251471}
@@ -49506,13 +49637,6 @@ MonoBehaviour:
   UpWallParticle: {fileID: 1914240583216508481}
   DownWallParticle: {fileID: 3204222969702174272}
   isMoving: 0
-  mouseHover: 0
-  isUsingPortal: 0
-  portalGotSentBack: 0
-  collisionTimer: 0
-  insidePortalTimer: 0
-  currentPortalScript: {fileID: 0}
-  lastPortalUsed: {fileID: 0}
 --- !u!61 &1346361850810712682
 BoxCollider2D:
   m_ObjectHideFlags: 0
