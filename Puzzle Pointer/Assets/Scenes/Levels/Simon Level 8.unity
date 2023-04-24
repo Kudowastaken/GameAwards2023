@@ -1514,7 +1514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7815285840203678415, guid: 204c5f9222493874fb2ce405a7e6d318, type: 3}
       propertyPath: m_text
-      value: '8
+      value: '9
 
 '
       objectReference: {fileID: 0}

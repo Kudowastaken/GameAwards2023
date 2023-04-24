@@ -45,6 +45,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Simon Level 8.unity
     guid: ac5dd0895520d234fad3e6b13cff8fac
   - enabled: 1
+    path: Assets/Scenes/Levels/Simon Lvl something 1.unity
+    guid: a49b8fa05ad5ec64b8aaade35c59fc14
+  - enabled: 1
     path: Assets/Scenes/Levels/Simon Lvl something.unity
     guid: 60bfe82dc98e5c3429bb9e3380fe13c0
   m_configObjects:
