@@ -29,7 +29,6 @@ public class ScreenFadeAnimationEvent : MonoBehaviour
         {
             ScreenFadeIn();
         }
-
         if (scene.buildIndex > 2)
         {
             if(goNextLevel)
